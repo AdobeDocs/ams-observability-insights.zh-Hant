@@ -1,23 +1,23 @@
 ---
-title: 使用Synoptryx進行應用程式效能監督(APM)
-description: 使用Synoptryx APM外掛程式來追蹤AEM交易、監視JVM、分析交易，以及在AEM Managed Services上檢查交易追蹤和外部服務。
+title: 使用 [!DNL Synoptryx]的應用程式效能監視(APM)
+description: 使用 [!DNL Synoptryx] APM外掛程式來追蹤AEM交易、監視JVM、分析交易，以及在AEM Managed Services上檢查交易追蹤和外部服務。
 feature: Operations
 role: Admin
-source-git-commit: 883b68e3bc57ba6b55559560a967a6dbc553262a
+source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
 workflow-type: tm+mt
-source-wordcount: '1089'
+source-wordcount: '1078'
 ht-degree: 5%
 
 ---
 
 
-# 使用Synoptryx進行應用程式效能監督(APM) {#application-performance-monitoring}
+# 使用[!DNL Synoptryx]的應用程式效能監視(APM) {#application-performance-monitoring}
 
-Synoptryx應用程式效能監控(APM)可提供Adobe Experience Manager (AEM)效能和一般使用者體驗的即時和歷史insight。 端對端交易追蹤、圖表和報表可讓您深入瞭解Java程式碼層級的應用程式行為。
+[!DNL Synoptryx]應用程式效能監控(APM)提供Adobe [!DNL Experience Manager] (AEM)效能和一般使用者體驗的即時和歷史insight。 端對端交易追蹤、圖表和報表可讓您深入瞭解Java程式碼層級的應用程式行為。
 
-## Managed Services Synoptryx APM外掛程式 {#apm-plugin}
+## Managed Services [!DNL Synoptryx] APM外掛程式 {#apm-plugin}
 
-AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組（以Apache Sling和Jackrabbit Oak為基礎）。 Adobe Managed Services、AEM工程和Synoptryx工程公司聯合開發適用於Managed Services環境的自訂工具。
+AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組（以Apache Sling和Jackrabbit Oak為基礎）。 Adobe Managed Services、AEM工程和[!DNL Synoptryx]工程部門共同為Managed Services環境開發自訂工具。
 
 該檢測會收集：
 
@@ -29,7 +29,7 @@ AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組
 
 ![Synoptryx APM追蹤檢視顯示頁面要求的巢狀AEM元件範圍和執行時間表](assets/image19.png)
 
-## 使用Synoptryx APM {#using-apm}
+## 使用[!DNL Synoptryx] APM {#using-apm}
 
 使用APM在影響使用者之前找出應用程式問題。 Author和Publish共用一個程式碼基底，但會監視為&#x200B;**個獨立的APM應用程式**，因此您可以獨立分析每個階層。
 
@@ -38,7 +38,7 @@ AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組
 - 一個APM應用程式供作者使用
 - 一個用於發佈的APM應用程式
 
-在Synoptryx APM中選取應用程式名稱，以開啟其概述與監視儀表板。
+在[!DNL Synoptryx] APM中選取應用程式名稱，以開啟其總覽與監視儀表板。
 
 ![顯示作者與發佈應用程式的Synoptryx APM應用程式清單](assets/image1a.png)
 
@@ -70,7 +70,7 @@ AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組
 
 ### 說明
 
-**總覽**&#x200B;區段提供高階關鍵績效指標(KPI)，用於摘要目前受監視應用程式的狀態。
+**[!UICONTROL 總覽]**&#x200B;區段提供高階關鍵績效指標(KPI)，用於摘要目前受監視應用程式的狀態。
 
 這些KPI提供應用程式活動、輸送量、請求成功和整體使用者體驗的簡單摘要。
 
