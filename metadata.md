@@ -6,7 +6,7 @@ product_v2:
 usetq: true
 type: Documentation
 mini-toc-levels: 2
-git-repo: https://github.com/AdobeDocs/ams-synoptryx.en
+git-repo: https://github.com/AdobeDocs/ams-synoptryx.zh-Hant
 recommendations: noDisplay
 index: true
 source-git-commit: afe2b8c05462fbe551820e9ce4b1ec3b1b0f24f8
