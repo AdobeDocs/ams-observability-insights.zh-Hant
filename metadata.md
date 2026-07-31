@@ -1,15 +1,15 @@
 ---
 cloud: Experience Cloud
 solution: Experience Manager
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
 usetq: true
 type: Documentation
 mini-toc-levels: 2
-git-repo: https://github.com/AdobeDocs/ams-synoptryx.zh-Hant
+git-repo: https://github.com/AdobeDocs/ams-synoptryx.en
 recommendations: noDisplay
-index: true
-source-git-commit: afe2b8c05462fbe551820e9ce4b1ec3b1b0f24f8
+index: false
+hide: true
+source-git-commit: 528f78bf45e46085edebbb9f873cfaa8b990df24
 workflow-type: tm+mt
 source-wordcount: 13
 ht-degree: 0%
