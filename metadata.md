@@ -8,8 +8,9 @@ type: Documentation
 mini-toc-levels: 2
 git-repo: https://github.com/AdobeDocs/ams-synoptryx.zh-Hant
 recommendations: noDisplay
-index: true
-source-git-commit: afe2b8c05462fbe551820e9ce4b1ec3b1b0f24f8
+index: false
+hide: true
+source-git-commit: 528f78bf45e46085edebbb9f873cfaa8b990df24
 workflow-type: tm+mt
 source-wordcount: 13
 ht-degree: 0%
