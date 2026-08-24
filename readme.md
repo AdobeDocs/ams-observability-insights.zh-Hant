@@ -1,10 +1,10 @@
 ---
-source-git-commit: b6d87541dfa32a535e1256ce4805bcc1d4991a49
+source-git-commit: 6a69fa445f03deedac6a616a04a2ffe4258fffd3
 workflow-type: tm+mt
-source-wordcount: '15'
+source-wordcount: '16'
 ht-degree: 0%
 
 ---
-# Adobe Managed Services Synoptryx檔案
+# Adobe Managed Services可觀察性深入分析檔案
 
-這是Adobe Managed Services Synoptryx檔案的存放庫。
+這是Adobe Managed Services可觀察性檔案的存放庫。
