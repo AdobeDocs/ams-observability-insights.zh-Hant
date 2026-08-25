@@ -1,76 +1,33 @@
 ---
-title: 使用 [!DNL Synoptryx]的應用程式效能監視(APM)
-description: 使用 [!DNL Synoptryx] APM外掛程式來追蹤AEM交易、監視JVM、分析交易，以及在AEM Managed Services上檢查交易追蹤和外部服務。
+title: APM儀表板參考
+description: APM儀表板的可檢視性深入分析的逐面板參考，包括熒幕擷取畫面、量度和單位。
 feature: Operations
 role: Admin
-source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
+source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
 workflow-type: tm+mt
-source-wordcount: '1078'
-ht-degree: 5%
+source-wordcount: '806'
+ht-degree: 7%
 
 ---
 
 
-# 使用[!DNL Synoptryx]的應用程式效能監視(APM) {#application-performance-monitoring}
+# APM儀表板參考 {#apm-dashboard-reference}
 
-[!DNL Synoptryx]應用程式效能監控(APM)提供Adobe [!DNL Experience Manager] (AEM)效能和一般使用者體驗的即時和歷史insight。 端對端交易追蹤、圖表和報表可讓您深入瞭解Java程式碼層級的應用程式行為。
-
-## Managed Services [!DNL Synoptryx] APM外掛程式 {#apm-plugin}
-
-AEM會在Jetty上以Java應用程式形式執行，具有Apache Felix OSGi模組（以Apache Sling和Jackrabbit Oak為基礎）。 Adobe Managed Services、AEM工程和[!DNL Synoptryx]工程部門共同為Managed Services環境開發自訂工具。
-
-該檢測會收集：
-
-- **有意義的交易命名** — Sling擴充功能會將交易名稱與頁面結構對齊，並在Insights事件上新增`requestURL`屬性，以便您可以將Sling URL在儀表板間建立關聯。
-
-![顯示描述性AEM交易名稱的Synoptryx APM追蹤檢視表，其中包含Sling健康狀態檢查路由及跨時間軸](assets/image19a.png)
-
-- **JCR檢測** — 儲存庫層級的作業（包括XPath和JCR-SQL2）會分類並附加至APM的資料庫區段中的交易追蹤。
-
-![Synoptryx APM追蹤檢視顯示頁面要求的巢狀AEM元件範圍和執行時間表](assets/image19.png)
-
-## 使用[!DNL Synoptryx] APM {#using-apm}
-
-使用APM在影響使用者之前找出應用程式問題。 Author和Publish共用一個程式碼基底，但會監視為&#x200B;**個獨立的APM應用程式**，因此您可以獨立分析每個階層。
-
-每個Managed Services環境包含：
-
-- 一個APM應用程式供作者使用
-- 一個用於發佈的APM應用程式
-
-在[!DNL Synoptryx] APM中選取應用程式名稱，以開啟其總覽與監視儀表板。
-
-![顯示作者與發佈應用程式的Synoptryx APM應用程式清單](assets/image1a.png)
-
-## 控制面板區段
-
-「應用程式效能管理」儀表板包含下列段落：
-
-- 概觀
-- 紅色量度（比率·錯誤·持續時間）
-- 流量
-- 延遲與效能
-- 錯誤詳細資料
-- 排名在前的交易
-- JVM健康狀態
-- JVM 記憶體
-- 記憶體回收
-
-本指南僅記錄下列章節。
+本參考記錄了AEM Managed Services中使用的主要可觀察性深入分析APM面板。
 
 ## 控制面板導覽
 
-![儀表板導覽](assets/apm/1_opening_screen.png)
+![儀表板導覽](../assets/apm/1_opening_screen.png)
 
 控制面板會組織為可展開的區段，將相關的應用程式效能度量分組。 展開區段會顯示與該類別相關聯的一或多個圖表。
 
 ## 概觀
 
-![概觀](assets/apm/1.1_apm_overview.png)
+![概觀](../assets/apm/1.1_apm_overview.png)
 
 ### 說明
 
-**[!UICONTROL 總覽]**&#x200B;區段提供高階關鍵績效指標(KPI)，用於摘要目前受監視應用程式的狀態。
+**總覽**&#x200B;區段提供高階關鍵績效指標(KPI)，用於摘要目前受監視應用程式的狀態。
 
 這些KPI提供應用程式活動、輸送量、請求成功和整體使用者體驗的簡單摘要。
 
@@ -144,7 +101,7 @@ RED方法可測量應用程式的三個主要特性：
 
 ### 請求率
 
-![要求速率](assets/apm/2_red_metrics_request_rate.png)
+![要求速率](../assets/apm/2_red_metrics_request_rate.png)
 
 #### 說明
 
@@ -171,7 +128,7 @@ req_min
 
 ### 錯誤率
 
-![錯誤率](assets/apm/3_error_rate.png)
+![錯誤率](../assets/apm/3_error_rate.png)
 
 #### 說明
 
@@ -199,7 +156,7 @@ error_pct (1h ago)
 
 ### 請求持續時間
 
-![要求持續時間](assets/apm/4_request_duration_p50_p95.png)
+![要求持續時間](../assets/apm/4_request_duration_p50_p95.png)
 
 #### 說明
 
@@ -242,7 +199,7 @@ P90
 
 ### 依HTTP狀態代碼提出的請求
 
-![按狀態碼要求](assets/apm/5_requests_by_status_code.png)
+![按狀態碼要求](../assets/apm/5_requests_by_status_code.png)
 
 #### 說明
 
@@ -277,7 +234,7 @@ req_s 500
 
 ### 依端點的要求速率
 
-![端點要求速率](assets/apm/6_request_rate_by_end_point.png)
+![端點要求速率](../assets/apm/6_request_rate_by_end_point.png)
 
 #### 說明
 
@@ -302,11 +259,11 @@ endpoint_request_rate
 - 排名端點清單
 - 相對請求量
 
-## 延遲與效能
+## 延遲和效能
 
 ### 回應時間 — P95與1小時
 
-![回應時間P95](assets/apm/7_response_time_p95_1h.png)
+![回應時間P95](../assets/apm/7_response_time_p95_1h.png)
 
 #### 說明
 
@@ -334,7 +291,7 @@ P95 (1 Hour Ago)
 
 ### 一段時間的APDEX分數
 
-![APDEX](assets/apm/8_apdex_score_overtime.png)
+![APDEX](../assets/apm/8_apdex_score_overtime.png)
 
 #### 說明
 
@@ -360,7 +317,7 @@ APDEX Score
 
 ### 傳輸量與P95延遲的比較
 
-![輸送量與延遲](assets/apm/9_throughput_vs_p95latency.png)
+![輸送量與延遲](../assets/apm/9_throughput_vs_p95latency.png)
 
 #### 說明
 
@@ -392,7 +349,7 @@ P95 Latency
 
 ### 錯誤率% （依狀態群組）
 
-按狀態群組![錯誤率](assets/apm/10_error_rate_pct_by_status_group.png)
+按狀態群組![錯誤率](../assets/apm/10_error_rate_pct_by_status_group.png)
 
 #### 說明
 
@@ -424,10 +381,9 @@ Combined Error Trend
 - 平均錯誤百分比
 - 時間序列趨勢
 
-
 ### 錯誤率趨勢 — 現在與1小時前
 
-![錯誤率1小時](assets/apm/11_error_ratio_trend_1h.png)
+![錯誤率1小時](../assets/apm/11_error_ratio_trend_1h.png)
 
 #### 說明
 
@@ -452,7 +408,7 @@ Current Error Ratio
 
 ### 錯誤率趨勢 — 現在與6小時前
 
-![錯誤率6小時](assets/apm/12_error_ratio_trend_6h.png)
+![錯誤率6小時](../assets/apm/12_error_ratio_trend_6h.png)
 
 #### 說明
 

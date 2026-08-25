@@ -1,19 +1,19 @@
 ---
-title: 使用 [!DNL Synoptryx]監視基礎結構
-description: 使用 [!DNL Synoptryx] 基礎建設監視功能，檢閱整個AEM Managed Services足跡的主機層級系統、網路、處理程式和儲存量度。
+title: 基礎結構儀表板參考
+description: 「可觀察性深入分析」基礎結構儀表板的逐面板參考，包括熒幕擷取畫面、量度和單位。
 feature: Operations
 role: Admin
-source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
+source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
 workflow-type: tm+mt
-source-wordcount: '1107'
+source-wordcount: '1091'
 ht-degree: 7%
 
 ---
 
 
-# 主機基礎結構監視儀表板
+# 基礎結構儀表板參考 {#infrastructure-dashboard-reference}
 
-本節說明基礎架構監視控制面板上顯示的每個主機層級基礎架構監檢視形。 每個區段都會說明量度的用途、收集的資料、測量單位，以及視覺效果中呈現的資訊。
+此參考會記錄用於AEM Managed Services可觀察性深入分析的主機層級基礎結構面板。
 
 ## 控制面板概觀
 
@@ -32,11 +32,11 @@ ht-degree: 7%
 
 ## &#x200B;1. 主機CPU使用率
 
-![主機CPU使用率](assets/host-monitoring/host_cpu_utilization.png)
+![主機CPU使用率](../assets/host-monitoring/host_cpu_utilization.png)
 
 ### 說明
 
-**[!UICONTROL 主機CPU使用率]**&#x200B;面板會顯示作業系統和所有執行中的處理序目前在一段時間內所使用的CPU資源百分比。
+**主機CPU使用率**&#x200B;面板會顯示作業系統和所有執行中的處理序目前在一段時間內所使用的CPU資源百分比。
 
 此量度代表主機上的整體CPU使用量，並提供處理器活動的時間序列視覺效果。
 
@@ -71,11 +71,11 @@ ht-degree: 7%
 
 ## &#x200B;2. 主機磁碟I/O
 
-![主機磁碟I/O](assets/host-monitoring/host_disk_io.png)
+![主機磁碟I/O](../assets/host-monitoring/host_disk_io.png)
 
 ### 說明
 
-**[!UICONTROL 主機磁碟I/O]**&#x200B;面板會顯示主機所執行之磁碟讀取和磁碟寫入作業的儲存輸送量。
+**主機磁碟I/O**&#x200B;面板會顯示主機所執行之磁碟讀取和磁碟寫入作業的儲存輸送量。
 
 此圖表呈現兩個獨立的時間序列，代表作業系統與儲存裝置之間傳輸的資料。
 
@@ -109,11 +109,11 @@ ht-degree: 7%
 
 ## &#x200B;3. 主機網路I/O
 
-![主機網路I/O](assets/host-monitoring/host_network_io.png)
+![主機網路I/O](../assets/host-monitoring/host_network_io.png)
 
 ### 說明
 
-**[!UICONTROL 主機網路I/O]**&#x200B;面板會顯示主機在一段時間內所傳輸和接收的網路流量。
+**主機網路I/O**&#x200B;面板會顯示主機在一段時間內所傳輸和接收的網路流量。
 
 圖表會測量資料流經網路介面的速率，並提供網路頻寬消耗的可見度。
 此測量結果代表彙總網路輸送量。
@@ -152,11 +152,11 @@ ht-degree: 7%
 
 ## &#x200B;4. CPU I/O等待
 
-![CPU I/O等候](assets/host-monitoring/cpu_io_wait.png)
+![CPU I/O等候](../assets/host-monitoring/cpu_io_wait.png)
 
 ### 說明
 
-**[!UICONTROL CPU I/O等待]**&#x200B;面板會顯示CPU等候輸入/輸出作業完成所花費的時間百分比。
+**CPU I/O等待**&#x200B;面板會顯示CPU等候輸入/輸出作業完成所花費的時間百分比。
 
 此測量結果代表發生於等待儲存裝置或其他I/O作業時，因為作用中處理序遭到封鎖而發生的處理器閒置時間。
 
@@ -189,11 +189,11 @@ ht-degree: 7%
 
 ## &#x200B;5. 儲存空間使用量
 
-![儲存空間使用量](assets/host-monitoring/storage_disk_usage.png)
+![儲存空間使用量](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 說明
 
-**[!UICONTROL 儲存空間使用量]**&#x200B;面板會顯示目前受監視主機上使用的儲存空間容量整體百分比。
+**儲存空間使用量**&#x200B;面板會顯示目前受監視主機上使用的儲存空間容量整體百分比。
 
 圖表提供所選時間間隔內檔案系統容量使用率的歷史檢視。
 
@@ -215,11 +215,11 @@ ht-degree: 7%
 
 ## &#x200B;6. 磁碟使用情況
 
-![磁碟使用量](assets/host-monitoring/storage_disk_usage.png)
+![磁碟使用量](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 說明
 
-**[!UICONTROL 磁碟使用量]**&#x200B;面板會顯示每個已掛接檔案系統或儲存裝置的儲存使用量。
+**磁碟使用量**&#x200B;面板會顯示每個已掛接檔案系統或儲存裝置的儲存使用量。
 
 每一列對應到特定的區塊裝置或掛載的分割區，並報告目前使用的空間百分比。
 
@@ -248,11 +248,11 @@ ht-degree: 7%
 
 ## &#x200B;7. 主機CPU平均載入
 
-![主機CPU平均負載](assets/host-monitoring/host_cpu_load_average.png)
+![主機CPU平均負載](../assets/host-monitoring/host_cpu_load_average.png)
 
 ### 說明
 
-**[!UICONTROL 主機CPU平均負載]**&#x200B;面板會顯示三個滾動時間範圍內的Linux系統平均負載。
+**主機CPU平均負載**&#x200B;面板會顯示三個滾動時間範圍內的Linux系統平均負載。
 
 與CPU使用率不同，平均負載代表主動執行或等候CPU排程或I/O完成的流程平均數。
 
@@ -289,11 +289,11 @@ ht-degree: 7%
 
 ## &#x200B;8. 主機記憶體使用率
 
-![主機記憶體使用量](assets/host-monitoring/host_memory_usage.png)
+![主機記憶體使用量](../assets/host-monitoring/host_memory_usage.png)
 
 ### 說明
 
-**[!UICONTROL 主機記憶體使用量]**&#x200B;面板會顯示作業系統目前配置的實體系統記憶體百分比。
+**主機記憶體使用量**&#x200B;面板會顯示作業系統目前配置的實體系統記憶體百分比。
 
 此測量結果代表所有執行中的處理作業、核心記憶體、緩衝區和快取的總體RAM使用率。
 

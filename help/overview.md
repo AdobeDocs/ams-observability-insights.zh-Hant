@@ -1,68 +1,91 @@
 ---
-title: 使用 [!DNL Synoptryx]監視您的AEM Managed Services環境
-description: 概略介紹Adobe [!DNL Experience Manager] Managed Services上的 [!DNL Synoptryx] 監控 — Adobe會監控哪些專案、您的帳戶設定方式，以及您的團隊如何取得存取權。
+title: 使用可觀察性深入分析監控您的AEM Managed Services環境
+description: 從這裡開始瞭解AEM Managed Services中的「可觀察性深入分析」包含哪些內容、其服務對象，以及如何導覽本指南的其餘部分。
 feature: Operations
 role: Admin
-source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
+source-git-commit: 440f182902d797a91b584fe1bac7f2b417f30ebe
 workflow-type: tm+mt
-source-wordcount: '618'
+source-wordcount: '733'
 ht-degree: 0%
 
 ---
 
 
-# 使用[!DNL Synoptryx]監視您的AEM Managed Services環境 {#synoptryx-monitoring}
+# 使用可觀察性深入分析監控您的AEM Managed Services環境 {#observability-insights-monitoring}
 
-[!DNL Synoptryx]可讓您的團隊瞭解應用程式效能、基礎建設狀況以及一般使用者體驗，而不需另外設定監控平台。
+**可觀察性深入分析**&#x200B;可讓您在AEM Managed Services中檢視應用程式效能、基礎架構狀況和服務行為，而不需要個別的監控平台。
 
->[!NOTE]
->
-> [!DNL Synoptryx]產品總覽白皮書提供完整的AEM Managed Services可觀察性和監視總覽，非常適合與利害關係人共用或離線檢閱。
+如果您負責服務可靠性、事件回應或效能分析，**可觀察性深入分析**&#x200B;可協助您快速從症狀移至證據。 它結合應用程式遙測和主機層級的健全狀況訊號，讓客戶團隊和Adobe可以從共用的運作檢視中調查問題。
 
-## 概觀 {#overview}
+## 團隊為何要使用可觀察性深入分析？ {#why-teams-use-observability-insights}
 
-[!DNL Synoptryx]是Adobe的新一代可觀察性平台，其設計可提供跨應用程式效能、基礎建設狀況及綜合監控的統一可見度。 透過單一、整合的體驗，主動監控關鍵業務服務。 [!DNL Synoptryx]結合應用程式效能監控(APM)、基礎建設監控及綜合使用者歷程監控，以協助在問題影響一般使用者之前識別並解決問題。 此平台提供深層交易追蹤、JVM深入分析、基礎架構遙測和進階診斷，以加快根本原因分析速度。 它以現代可觀察性技術為基礎，提供在複雜企業環境中可擴充且安全的監控。 [!DNL Synoptryx]提供更長的資料保留、豐富的控制面板和智慧型分析，以支援卓越的營運。 透過[!DNL Adobe IMS]的順暢登入體驗，可確保安全存取與控管。 此平台旨在改善服務可靠性、加速疑難排解，並增強客戶體驗。 作為Adobe的策略可觀察性解決方案，[!DNL Synoptryx]為跨受管理服務環境的監控、自動化和營運深入分析提供可隨時因應未來的基礎。
+使用「可觀察性深入分析」來回答操作問題，例如：
 
-[!DNL Synoptryx]包含在Adobe [!DNL Experience Manager] Managed Services中 — 不需要個別的監控平台或授權。 Adobe會監視您環境的可用性和效能，作為我們標準產品的一部分，而[!DNL Synoptryx]是您的團隊可用來瞭解Adobe [!DNL Experience Manager] (AEM)應用程式和支援基礎架構效能的專用平台。
+- 問題是否會影響「作者」、「發佈」，或同時影響兩者？
+- 問題是否由應用程式行為、主機資源壓力或兩者的組合所造成？
+- 哪些交易、端點或狀態群組可解釋錯誤或延遲的尖峰？
+- 問題是否孤立於一個環境，或是橫跨更廣大的拓撲結構皆可見？
 
-本指南說明所監控的內容、您的[!DNL Synoptryx]帳戶設定方式，以及如何瀏覽您用於日常分析和疑難排解的儀表板。
+「可觀察性深入分析」是針對最近行為的作業分析而設計。 它可協助您識別哪些專案已變更、變更的位置，以及哪些訊號在升級或修正動作之前最相關。
+
+## 什麼可觀察性深入解析可協助您這麼做？ {#what-observability-insights-helps-you-do}
+
+使用可觀察性深入分析來：
+
+- 瞭解製作和發佈層級在實際流量下的行為。
+- 將應用程式延遲、錯誤率和JVM健康情況與主機層級訊號建立關聯。
+- 確認問題孤立於一個環境、一個層級或一個主機。
+- 在調查期間為Adobe Managed Services和您的內部團隊提供共用的運作檢視。
+
+AEM Managed Services隨附可觀察性深入分析。 Adobe會布建和管理帳戶、工具支援的環境，並將產生的儀表板以唯讀操作工具的形式向您的團隊公開。
+
+由於Adobe會管理平台設定和檢測，因此您可以專注於調查和解釋，而不是代理程式部署、帳戶管理或儀表板元件。
 
 ## 產品一覽 {#at-a-glance}
 
 在AEM Managed Services中，您會收到：
 
-- **專用的[!DNL Synoptryx]帳戶** — 已布建並由Adobe Managed Services監督，您的團隊擁有唯讀存取權。
-- **深層AEM交易監視** — [!DNL Synoptryx] APM代理程式會追蹤有意義交易，直到方法呼叫（包括行號）、外部相依性和存放庫作業為止。
-- **統一的應用程式和基礎結構檢視** — 結合APM和主機層級的量度，以整體最佳化效能。
+- **專用可觀察性深入分析帳戶** — 由Adobe Managed Services布建和監督，為您的團隊提供唯讀存取權。
+- **深層AEM交易監視** — Observability Insights APM代理程式會追蹤有意義交易，一直到方法呼叫（包括行號）、外部相依性和存放庫作業。
+- **整合式應用程式和主機檢視** — 結合應用程式和主機層級量度，以整體最佳化效能。
 
-## 使用[!DNL Synoptryx]監視哪些Adobe {#what-we-monitor}
+## 本檔案的適用對象 {#who-this-documentation-is-for}
 
-Adobe使用[!DNL Synoptryx] APM Java外掛程式監視AEM **作者**&#x200B;和&#x200B;**發佈**&#x200B;階層。 您拓朴中的所有託管伺服器都是透過[!DNL Synoptryx]基礎結構代理程式監視。 自訂APM和基礎結構監視在非生產和生產Managed Services環境中都啟用。
+本檔案主要針對：
 
-![圖表顯示跨AEM作者、發佈和託管伺服器的Synoptryx APM和基礎結構監視](assets/image6.png)
+- 需要深入瞭解受監控環境的AEM Managed Services管理員
+- 處理事件、趨勢分析和服務審查的運作和支援團隊
+- 客戶工程團隊在調查期間與Adobe Managed Services合作
+- 需要瞭解監控範圍和營運責任的利害關係人
+
+## Adobe使用可觀察性深入分析監控什麼 {#what-we-monitor}
+
+Adobe使用Observability Insights APM Java外掛程式監視AEM **作者**&#x200B;和&#x200B;**發佈**&#x200B;階層。 您拓朴中的所有託管伺服器都會使用Observability Insights Infrastructure代理程式進行監視。 自訂APM和基礎結構監視在非生產和生產Managed Services環境中都啟用。
+
+![圖表顯示跨AEM作者、發佈和託管伺服器的Observability Insights APM和基礎結構監視](v2-assets/login-screen.png)
 
 ### 您帳戶中的應用程式 {#applications-in-your-account}
 
-您的[!DNL Synoptryx]帳戶已連結至單一Adobe主帳戶，且可從多個應用程式接收資料，包括：
+您的Observability Insights帳戶已連結至單一Adobe主帳戶，並可接收來自多個應用程式的資料，包括：
 
 - 每個AEM Managed Services環境一個&#x200B;**作者**&#x200B;層級的APM應用程式
 - 每個AEM Managed Services環境一個&#x200B;**發佈**&#x200B;層的APM應用程式
 
-每個應用程式都有自己的授權金鑰。 您的Managed Services合約報表中的所有拓撲都集中到一個[!DNL Synoptryx]帳戶中。 APM和基礎結構量度和事件最多可保留&#x200B;**30天**。
+每個應用程式都有自己的授權金鑰。 Managed Services合約中的所有拓撲都會報告至一個「可觀察性深入分析」帳戶。 APM和基礎結構量度和事件最多可保留&#x200B;**30天**。
 
-## 存取許可權與您的帳戶 {#access}
+## 存取您的帳戶 {#access}
 
-監控資料已合併到Adobe布建和管理的[!DNL Synoptryx]帳戶中。 您的團隊會收到代理程式收集的所有APM和基礎結構度量的&#x200B;**完整唯讀存取權**。 Adobe Managed Services保留該帳戶的所有權和管理控制權。
+監控資料會整合至Adobe布建和管理的「可觀察性深入分析」帳戶中。 客戶使用者會收到代理程式所收集之APM和基礎結構資料的&#x200B;**唯讀存取權**。 Adobe Managed Services保留帳戶擁有權和管理控制權。
+
+### 先決條件 {#access-prerequisites}
+
+登入前，請先確認下列事項：
+
+- 您的組織擁有使用中的&#x200B;**AEM Managed Services**&#x200B;訂閱。 其中不包含可觀察性深入分析，不需額外付費。
+- 您的客戶成功工程師(CSE)已布建您的Adobe IMS帳戶，並授予您組織可觀察性深入分析帳戶的存取權。
 
 >[!NOTE]
 >
-> **取得存取權：**&#x200B;存取[!DNL Synoptryx]需要[!DNL Adobe IMS]布建。 您的客戶成功工程師(CSE)可以為您的組織布建和管理使用者存取權。
+> **若要取得存取權：**&#x200B;若要存取Observability Insights，必須使用Adobe IMS布建。 請聯絡您的客戶成功工程師(CSE)，以布建和管理組織的使用者存取權。
 
-在CSE布建帳戶後，您可以在[synoptryx.adobecqms.net](https://synoptryx.adobecqms.net)登入。
-
-## 後續步驟 {#whats-next}
-
-繼續使用您團隊日常使用的監控儀表板：
-
-- [應用程式效能監視(APM)](application-performance-monitoring.md) — 追蹤AEM交易、分析JVM行為並檢查外部服務。
-- [基礎架構監視](infrastructure-monitoring.md) — 檢閱主機層級的系統、網路、處理序和儲存體測量結果。
+CSE布建帳戶後，請登入[insights.adobecqms.net](https://insights.adobecqms.net)。 此URL對所有AEM Managed Services客戶而言都相同；您組織的環境和儀表板屬於您布建的帳戶的範圍。
