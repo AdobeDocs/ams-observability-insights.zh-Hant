@@ -3,9 +3,9 @@ title: 常見問題集
 description: AEM Managed Services中可觀察性深入分析的常見問題和調查起點。
 feature: Operations
 role: Admin
-source-git-commit: 3e9cd3734665dc06a4b90902b229dffb8f5421df
+source-git-commit: 68b80f99e8be9deed37ea857d1dc7cb0ba3ec94d
 workflow-type: tm+mt
-source-wordcount: '216'
+source-wordcount: '186'
 ht-degree: 0%
 
 ---
@@ -26,13 +26,6 @@ ht-degree: 0%
 ## 如何判斷問題是否與應用程式或基礎架構相關？ {#application-or-infrastructure}
 
 從[應用程式效能監視](/help/applications.md)開始，檢閱製作或發佈上的要求率、錯誤率和延遲。 如果應用程式訊號已提升，請使用[主機](/help/hosts.md)來檢查主機層級的資源壓力（CPU、記憶體、磁碟或網路）是否說明或複合您所看到的內容。
-
-## 我應如何瞭解特定圖表或量度？ {#understand-graph-or-metric}
-
-使用控制面板參考頁面來取得逐個面板的說明、量度名稱、單位和熒幕擷取畫面：
-
-- [APM儀表板參考](../reference/apm-dashboard-reference.md)
-- [基礎結構儀表板參考](../reference/infrastructure-dashboard-reference.md)
 
 ## Observability Insights實際收集哪些資料？ {#what-data-is-collected}
 

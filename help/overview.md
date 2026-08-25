@@ -3,9 +3,9 @@ title: 使用可觀察性深入分析監控您的AEM Managed Services環境
 description: 從這裡開始瞭解AEM Managed Services中的「可觀察性深入分析」包含哪些內容、其服務對象，以及如何導覽本指南的其餘部分。
 feature: Operations
 role: Admin
-source-git-commit: 94ba857f5b6a5c33483e4d49f5a1daa9583b6347
+source-git-commit: 440f182902d797a91b584fe1bac7f2b417f30ebe
 workflow-type: tm+mt
-source-wordcount: '737'
+source-wordcount: '733'
 ht-degree: 0%
 
 ---
@@ -13,9 +13,9 @@ ht-degree: 0%
 
 # 使用可觀察性深入分析監控您的AEM Managed Services環境 {#observability-insights-monitoring}
 
-「可觀察性深入分析」可讓您在Adobe Experience Manager Managed Services中檢視應用程式效能、基礎架構健全狀況和服務行為，而不需要個別的監控平台。
+**可觀察性深入分析**&#x200B;可讓您在AEM Managed Services中檢視應用程式效能、基礎架構狀況和服務行為，而不需要個別的監控平台。
 
-如果您負責服務可靠性、事件回應或效能分析，可觀察性深入分析可協助您快速從症狀移至證據。 它結合應用程式遙測和主機層級的健全狀況訊號，因此客戶團隊和Adobe Managed Services可以從共用作業檢視中調查問題。
+如果您負責服務可靠性、事件回應或效能分析，**可觀察性深入分析**&#x200B;可協助您快速從症狀移至證據。 它結合應用程式遙測和主機層級的健全狀況訊號，讓客戶團隊和Adobe可以從共用的運作檢視中調查問題。
 
 ## 團隊為何要使用可觀察性深入分析？ {#why-teams-use-observability-insights}
 
