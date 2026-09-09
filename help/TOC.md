@@ -3,9 +3,9 @@ cloud: Experience Cloud
 user-guide-title: Adobe Managed Services可觀察性深入分析
 breadcrumb-title: 可觀察性深入分析
 user-guide-description: Adobe Managed Services可觀察性深入分析檔案
-source-git-commit: 269d0b7e9895077b0ae7a573bdad5408ca15e612
+source-git-commit: 11251645ac8e11559209e0b421cc2cf4f9297c10
 workflow-type: tm+mt
-source-wordcount: '41'
+source-wordcount: '43'
 ht-degree: 9%
 
 ---
@@ -20,4 +20,5 @@ ht-degree: 9%
 - [使用可觀察性深入分析](/help/use-observability-insights.md)
 - [應用](/help/applications.md)
 - [主機](/help/hosts.md)
+- [API檔案](/help/api.md)
 - [常見問題](/help/troubleshooting/common-questions.md)
