@@ -1,10 +1,12 @@
 ---
-source-git-commit: e5523081fcd68500602e5d1bf853694d1f6c3980
+title: 可觀察性深入分析公用API
+description: 可觀察性深入分析公用API可讓您直接將自己的可觀察性資料（要求概述、服務目錄、追蹤和量度）提取到您自己的工具、指令碼和儀表板中。
+source-git-commit: f9361af48539ab50bcde6265963247714621c0ce
 workflow-type: tm+mt
-source-wordcount: '1104'
+source-wordcount: '1135'
 ht-degree: 7%
-
 ---
+
 # 可觀察性深入分析公用API
 
 可觀察性深入分析公用API可讓您直接將自己的可觀察性資料（要求概述、服務目錄、追蹤和量度）提取到您自己的工具、指令碼和儀表板中。
@@ -14,8 +16,6 @@ ht-degree: 7%
 - **驗證：** API金鑰（持有人權杖）
 
 > 以您的Observability Insights執行個體的API主機（例如`https://insights.adobecqms.net/`）取代整個檔案的`{{API_BASE_URL}}`。
-
-&#x200B;---
 
 ## &#x200B;1. 取得API金鑰
 
@@ -48,7 +48,6 @@ API金鑰區段會列出您建立的每個金鑰，包括其組織、建立日�
 - 定期輪換金鑰並撤銷任何不再使用的金鑰。
 - 如果金鑰遭到破壞，請立即從&#x200B;**組織設定→API金鑰**&#x200B;中撤銷該金鑰，並產生替代金鑰。
 
-&#x200B;---
 
 ## &#x200B;2. 驗證請求
 
@@ -59,8 +58,6 @@ Authorization: Bearer synx_9pQ2v6f1WYbLZk3n0aRtEo4jXcHsVmDgUiPq7B8l1yc
 ```
 
 沒有有效金鑰或金鑰過期/撤銷的請求會收到`401 Unauthorized`。 工作階段登入（瀏覽器Cookie/權杖）在此API上&#x200B;**不接受**。
-
-&#x200B;---
 
 ## &#x200B;3. 基本概念
 
@@ -110,8 +107,6 @@ Retry-After: 60
 | `429 Too Many Requests` | 超過速率限制 — 請參閱`Retry-After` |
 | `502 Bad Gateway` | 上游查詢失敗 — 可安全重試 |
 | `503 Service Unavailable` | 資料後端暫時無法使用 |
-
-&#x200B;---
 
 ## &#x200B;4. 端點
 
@@ -347,15 +342,11 @@ curl -s "{{API_BASE_URL}}/public/v1/pages?tenant_id=<tenant_id>&limit=50" \
 }
 ```
 
-&#x200B;---
-
 ## &#x200B;5. 此API沒有的作用
 
 - **沒有原始SQL存取權。** 所有端點都會傳回已組織且專門建置的資料圖形 — 您無法直接查詢基礎資料存放區。
 - **沒有跨租使用者查詢。** 每個請求的範圍剛好是一個`tenant_id`。
 - **沒有寫入許可權。** 公用API是唯讀的。
-
-&#x200B;---
 
 ## &#x200B;6. 支援
 
