@@ -17,7 +17,7 @@ ht-degree: 1%
 
 ## 貢獻者指南檔案
 
-請參閱[貢獻者指南](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)。
+請參閱[貢獻者指南](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=zh-Hant)。
 
 ## 如何協助撰寫
 
@@ -58,4 +58,4 @@ ht-degree: 1%
 
 ## 更多資訊
 
-如需如何使用GitHub編寫平台的詳細資訊，請參閱[Adobe檔案貢獻者指南](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)。
+如需如何使用GitHub編寫平台的詳細資訊，請參閱[Adobe檔案貢獻者指南](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=zh-Hant)。
