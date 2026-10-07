@@ -3,13 +3,20 @@ title: 應用
 description: 應用程式提供應用程式效能監控(APM)功能，提供應用程式狀況、效能、交易以及支援每項服務的基礎架構的統一檢視。
 feature: Operations
 role: Admin
-source-git-commit: efddec659ebb1cdd22537d60ccca175680dfdab4
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '546'
 ht-degree: 0%
-
 ---
-
 
 # 應用
 
