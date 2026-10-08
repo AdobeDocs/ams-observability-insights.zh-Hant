@@ -3,13 +3,20 @@ title: 涵蓋範圍、環境和資料保留
 description: 檢視AEM Managed Services中的「可觀察性深入分析」監控了哪些專案、應用程式的呈現方式，以及監控資料會保留多長時間。
 feature: Operations
 role: Admin
-source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '267'
 ht-degree: 1%
-
 ---
-
 
 # 涵蓋範圍、環境和資料保留 {#coverage-environments-and-data-retention}
 

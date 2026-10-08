@@ -3,13 +3,20 @@ title: 基礎結構儀表板參考
 description: 「可觀察性深入分析」基礎結構儀表板的逐面板參考，包括熒幕擷取畫面、量度和單位。
 feature: Operations
 role: Admin
-source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '1091'
 ht-degree: 7%
-
 ---
-
 
 # 基礎結構儀表板參考 {#infrastructure-dashboard-reference}
 

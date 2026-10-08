@@ -1,7 +1,10 @@
 ---
 title: 可觀察性深入分析公用API
 description: 可觀察性深入分析公用API可讓您直接將自己的可觀察性資料（要求概述、服務目錄、追蹤和量度）提取到您自己的工具、指令碼和儀表板中。
-source-git-commit: f9361af48539ab50bcde6265963247714621c0ce
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '1135'
 ht-degree: 7%
