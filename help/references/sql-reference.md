@@ -286,7 +286,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 <details>
 <summary><code>apdex(attribute, T)</code></summary>
 
-使用屬性單位中的臨界值`T` （3}的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
+使用屬性單位中的臨界值`T` （3&rbrace;的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
 
 | 貯體 | 條件 | 粗細 |
 | ---------- | ------------------------------------ | ------ |
