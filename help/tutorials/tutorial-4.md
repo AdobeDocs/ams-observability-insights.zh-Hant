@@ -64,7 +64,7 @@ SELECT sum(callCount) AS calls, average(avgDurationMs) AS avgMs FROM SpanBreakdo
 SELECT average(avgDurationMs) AS avgMs FROM SpanBreakdown FACET segment TIMESERIES AUTO LIMIT 8
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > `avgDurationMs`未使用單位自動標籤。 將Widget **Unit**&#x200B;設定為`ms`。
 
 ### 探索及查詢任何量度
@@ -91,7 +91,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 SELECT count(*) FILTER (WHERE http.route != '') AS withRoute, count(*) FILTER (WHERE db.system != '') AS dbCalls, count(*) FILTER (WHERE peer.service != '') AS withPeer, count(*) FILTER (WHERE error.type != '') AS withErrorType FROM Span FACET service LIMIT 50
 ```
 
-> [!TIP]
+&#x200B;> [!TIP]
 > 當已組織的實體存在時（例如`CpuUtilization`），會偏好使用它而非`MetricGauge`。 它會套用正確的篩選器和單位轉換，而且可能是向上彙整加速。
 
 ### 選擇正確的追蹤實體

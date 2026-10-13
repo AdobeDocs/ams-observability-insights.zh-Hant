@@ -10,7 +10,7 @@ ht-degree: 0%
 
 **在此檔案中：** [10.1資料探索](#101-data-discovery) · [10.2輸送量](#102-throughput) · [10.3延遲](#103-latency) · [10.4錯誤](#104-errors) · [10.5 Apdex](#105-apdex--user-experience) · [10.6服務和主機](#106-services-hosts--instances) · [10.7相依性](#107-downstream-dependencies) · [10.8 AEM](#108-aem-adobe-experience-manager) · [10.9相依性基礎架構](#109-infrastructure) · [10.10 JVM](#1010-jvm--runtime)
 
-> [!TIP]
+&#x200B;> [!TIP]
 > 將範例值（例如`'checkout'`或`'web-publish-01'`）取代為您租使用者的實際值。 以下的資料探索查詢會列出這些查詢。
 
 ### 資料探索
@@ -385,7 +385,7 @@ SELECT average(value) AS cpu FROM CpuUtilization FACET host TIMESERIES AUTO
 SELECT average(value) AS userPct FROM CpuUserPercent TIMESERIES AUTO
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > SQL會讀取每個查詢的一個實體，因此user/system/iowait/steeve需要四個並排的Widget （請參閱[blueprint 11.6](#116-infrastructure-capacity-board) W7-W10）。 公式會將其摺疊為一個數字，而不是四個系列。
 
 **列** — 依主機的CPU p95：

@@ -32,7 +32,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 列會依第一欄遞減排序，所以將`timestamp`放在第一位，您最新的請求就會顯示在最上方。
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > SQL沒有`SELECT *`。 列出屬性可讓結果保持小規模且易於讀取。 [資料字典](#data-dictionary)和編輯器中的自動完成會顯示可用的內容。
 
 ### 彙總您的資料
@@ -65,7 +65,7 @@ SELECT uniqueCount(host) FROM Transaction
 SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs FROM Transaction
 ```
 
-> [!TIP]
+&#x200B;> [!TIP]
 > 別名會變成欄標題和圖例標籤，而它們就是您在`ORDER BY`中參照的內容。 養成命名每個彙總的習慣。
 
 ### 設定時間視窗
@@ -84,7 +84,7 @@ SELECT count(*) AS requests FROM Transaction SINCE 2 days ago UNTIL 1 day ago
 
 單位可以是`second`、`minute`、`hour`、`day`或`week`。 視窗最多可為31天。
 
-> [!IMPORTANT]
+&#x200B;> [!IMPORTANT]
 > 在&#x200B;**瀏覽**&#x200B;和&#x200B;**儀表板**&#x200B;中，頁面頂端的&#x200B;**時間選擇器**&#x200B;會控制視窗並覆寫`SINCE`/`UNTIL`。 若要檢視其他期間，請變更選擇器。 本指南的其餘部分則因此將`SINCE`保留在儀表板查詢之外。
 
 ### 使用`TIMESERIES`繪製趨勢
@@ -121,7 +121,7 @@ SELECT count(*) AS slowOrFailed FROM Transaction WHERE service = 'checkout' AND 
 SELECT count(*) AS contentRequests FROM Transaction WHERE urlPath LIKE '/content/%'
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > 字串值區分大小寫，且使用單引號： `'Error'`，而非`"Error"`或`'error'`。 以您租使用者的服務取代`checkout`。 下一個步驟將說明如何列出這些變數。
 
 ### 具有`FACET`的群組

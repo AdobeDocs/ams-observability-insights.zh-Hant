@@ -38,7 +38,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS writeBytesPerSec FROM DiskWriteRate FACET host, device TIMESERIES AUTO LIMIT 10
 ```
 
-> [!WARNING]
+&#x200B;> [!WARNING]
 > 一律以`host` （和磁碟的`device`）面向`rate()`，或篩選為單一主機。 若沒有這些，來自不同主機的讀數會混合在一起，而結果毫無意義。
 
 若要從追蹤取得&#x200B;**請求**&#x200B;速率，請改為以固定值區計算請求。 這會提供每分鐘的請求數：
@@ -146,7 +146,7 @@ SELECT sum(duration) AS v FROM Transaction
 | 每個量度 | 每個查詢只傳回一個彙總，不傳回`FACET` |
 | 缺少資料 | 缺少值或除以零會產生空點，永遠不會`Infinity`或`NaN` |
 
-> [!TIP]
+&#x200B;> [!TIP]
 > 在時間序列公式的每一個查詢中使用`TIMESERIES AUTO`。 由於查詢共用一個視窗，因此它們一律會解析為相同的貯體大小。
 
 ### 讓儀表板可重複使用變數
@@ -187,8 +187,8 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 當租使用者或時間選擇器變更時，選項會重新整理，而且會依字母順序排序。 當目前選取範圍不再有效時，會自動選取第一個值（單選）或所有值（多選）。 變數的查詢無法參考其他變數。
 
-> [!WARNING]
-> **目前的組建限制。** 儀表板格線中會發生替代，但&#x200B;**新增Widget**&#x200B;預覽和&#x200B;**伺服器端儲存檢查**&#x200B;會收到原始`{{name}}`權杖並使用&#x200B;_非預期的字元&#39;{&#39;_&#x200B;加以拒絕。 實際操作中：
+&#x200B;> [!WARNING]
+> **目前的組建限制。** 儀表板格線中會發生替代，但&#x200B;**新增Widget**&#x200B;預覽和&#x200B;**伺服器端儲存檢查**&#x200B;會收到原始`{{name}}`權杖並使用&#x200B;_非預期的字元&#39;&lbrace;&#39;_&#x200B;加以拒絕。 實際操作中：
 >
 > - **介面工具集標題**&#x200B;和&#x200B;**文字介面工具集**&#x200B;中的`{{variables}}`工作端對端。
 > - 在&#x200B;**匯入**&#x200B;之後，**介面工具集SQL**&#x200B;內的`{{variables}}`會正確轉譯，但是當這些Widget存在時，儀表板無法&#x200B;**儲存**。

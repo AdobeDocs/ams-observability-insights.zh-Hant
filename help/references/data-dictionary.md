@@ -109,7 +109,7 @@ ht-degree: 20%
 | `JvmCpuRecentUtilization` | JVM程式CPU | % |         | 1分鐘統計 |
 | `DispatcherRequestRate` | AEM Dispatcher HTTP請求 | 需要 | ✔ |                                              |
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > 每個記憶體集區&#x200B;**報告JVM記憶體量度**，因此`JvmHeapUsed` / `JvmHeapLimit`上的`average(value)`是跨集區的平均值。 請使用`FACET host, pool`來取得每個集區的正確檢視。
 
 ### `SpanBreakdown`：預先彙總的交易構成
