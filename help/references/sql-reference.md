@@ -1,9 +1,12 @@
 ---
-source-git-commit: 4949fcad799260aa73354a8c0b9d79e6394cb257
+title: SQL參考
+description: 參考Observability Insights支援的SQL語法、子句和函式。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '1479'
+source-wordcount: '1492'
 ht-degree: 9%
 ---
+
 ## SQL參考 {#sql-reference}
 
 此參考資料涵蓋SQL語法、子句、函式和運運算元。 展開每個專案以取得詳細資訊和範例。
@@ -28,7 +31,8 @@ FROM   <Entity>
 <unit>        := second | seconds | minute | minutes | hour | hours | day | days | week | weeks
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 上述`--`註解僅為檔案。 SQL本身不接受註解。
 
 ### 必要條款
@@ -154,7 +158,8 @@ SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, pe
 SELECT count(*) FROM Transaction FACET urlPath LIMIT 50
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > 一律在查詢導向變數和高基數Facet (`urlPath`， `traceId`， `jcr.path`， `url`)上設定`LIMIT`。
 
 </details>
@@ -194,7 +199,8 @@ SELECT count(*) FROM Transaction SINCE 6 hours ago
 - 時間範圍不能超過&#x200B;**31天** （_時間範圍不能超過31天_）。
 - 不支援絕對日期(`SINCE '2026-01-01'`)和`TODAY` / `YESTERDAY`。
 
-&#x200B;> [!IMPORTANT]
+>[!IMPORTANT]
+>
 > 在控制面板和Explore中，**時間選擇器會覆寫** `SINCE`和`UNTIL`。 請參閱[時間視窗優先順序](#time-window-precedence)。
 
 </details>
@@ -224,7 +230,8 @@ SELECT percentile(duration, 95) AS p95 FROM Transaction TIMESERIES AUTO
 SELECT count(*) FROM Transaction TIMESERIES 1 hour SINCE 1 day ago
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > 偏好儀表板上的`AUTO`。 不管時間選擇器怎麼說，它都會保留約120點。 這樣還可以避免每個主機的「損毀」行數，因為主機量度大約每90秒就會刮掉一次。
 
 </details>
@@ -279,7 +286,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 <details>
 <summary><code>apdex(attribute, T)</code></summary>
 
-使用屬性單位中的臨界值`T` （3&rbrace;的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
+使用屬性單位中的臨界值`T` （3}的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
 
 | 貯體 | 條件 | 粗細 |
 | ---------- | ------------------------------------ | ------ |
@@ -434,7 +441,8 @@ SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES 
 - 僅適用於計數器實體（在[資料字典](#53-curated-metric-entities)中標示為✔）。
 - 需要`TIMESERIES`，且必須是&#x200B;**僅限**&#x200B;彙總。 不允許`FILTER`。
 
-&#x200B;> [!WARNING]
+>[!WARNING]
+>
 > 一律為`FACET host`，或篩選為單一主機。 許多主機間未分面的`rate()`會比較不同主機的計數器，並產生無意義的數字。 磁碟計數器是依裝置而定，因此`FACET host, device`是最精確的。
 
 </details>
@@ -508,14 +516,16 @@ SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transacti
 SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND NOT host LIKE '%dispatcher%' AND http.method IN ('GET', 'POST')
 ```
 
-&#x200B;> [!WARNING]
+>[!WARNING]
+>
 > `attr = NULL`為錯誤。 使用`attr IS NULL`。
 
 ### 型別處理：空白與NULL
 
 目錄中的每個屬性都有型別： `string`、`number`、`boolean`或`timestamp`。 SQL型別檢查函式（例如，`average(service)`被拒絕）。 不需要或沒有可用的型別轉換函式。
 
-&#x200B;> [!IMPORTANT]
+>[!IMPORTANT]
+>
 > **空白與NULL。** 大部分字串屬性來自OpenTelemetry屬性對應，其中&#x200B;_遺失_&#x200B;索引鍵會讀取為空字串`''`，而不是`NULL`。 若要只保留具有屬性的範圍，請使用&#x200B;**`attr != ''`**&#x200B;而非`IS NOT NULL`。 數值屬性（例如`http.statusCode`）不存在時實際上是`NULL`，因此`IS NOT NULL`適用於它們。
 
 ```sql

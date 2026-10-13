@@ -1,9 +1,12 @@
 ---
-source-git-commit: 4949fcad799260aa73354a8c0b9d79e6394cb257
+title: 資料字典
+description: 參考可用於「可觀察性深入分析」SQL查詢的實體和屬性。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '585'
+source-wordcount: '598'
 ht-degree: 20%
 ---
+
 ## 資料字典 {#data-dictionary}
 
 這是您可以查詢的每個實體和屬性。 即時目錄（含說明）也在「瀏覽」和「新增Widget」對話方塊的&#x200B;**查詢指南**&#x200B;面板中。
@@ -109,7 +112,8 @@ ht-degree: 20%
 | `JvmCpuRecentUtilization` | JVM程式CPU | % |         | 1分鐘統計 |
 | `DispatcherRequestRate` | AEM Dispatcher HTTP請求 | 需要 | ✔ |                                              |
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 每個記憶體集區&#x200B;**報告JVM記憶體量度**，因此`JvmHeapUsed` / `JvmHeapLimit`上的`average(value)`是跨集區的平均值。 請使用`FACET host, pool`來取得每個集區的正確檢視。
 
 ### `SpanBreakdown`：預先彙總的交易構成

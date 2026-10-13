@@ -1,9 +1,12 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: 教學課程2：控制您的資料
+description: 瞭解如何在可觀察性深入分析中篩選、分組和控制查詢結果。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '344'
+source-wordcount: '361'
 ht-degree: 0%
 ---
+
 ## 教學課程2：控制您的資料 {#tutorial-2-control-your-data}
 
 在本教學課程中，您將學習將原始計數轉換為答案的函式和子句：相異計數、最新值、百分比、百分位數、萬用字元、排序和多維度分組。
@@ -66,7 +69,8 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > `Transaction.duration`的p50、p95和p99透過長視窗的統計提供，因此每週的檢視都能保持快速。
 
 ### 讓結果可透過標籤讀取
@@ -77,7 +81,8 @@ SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percent
 SELECT count(*) AS 'Requests', percentile(duration, 95) AS 'p95 (ms)' FROM Transaction FACET service
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 別名僅適用於`SELECT`個專案。 Facet欄一律標示屬性名稱。
 
 ### 比對模式和清單
@@ -100,7 +105,8 @@ SELECT count(*) AS requests FROM Transaction WHERE urlPath NOT LIKE '%.js' AND u
 SELECT count(*) AS requests FROM Transaction WHERE http.method IN ('POST', 'PUT', 'DELETE') FACET service
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > sql沒有規則運算式(`RLIKE`)。 將`LIKE`模式與`OR`結合，或使用`IN`。
 
 ### 使用`ORDER BY`排序和排名
@@ -117,7 +123,8 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT count(*) AS requests FROM Transaction FACET service ORDER BY requests ASC LIMIT 10
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > 沒有`HAVING`。 若要只尋找「忙碌」作業，請依`requests`排名並保留前N位，或新增可移除雜訊的`WHERE` （例如`WHERE http.method != 'OPTIONS'`）。
 
 ### 依數個屬性分組

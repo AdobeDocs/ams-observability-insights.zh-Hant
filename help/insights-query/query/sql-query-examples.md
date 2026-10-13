@@ -1,10 +1,13 @@
 ---
-source-git-commit: d3cd77e213674587152d6d33efa65328f420a547
+title: SQL查詢範例
+description: 探索Observability Insights遙測的SQL查詢範例。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '295'
+source-wordcount: '306'
 ht-degree: 10%
 ---
-### SQL查詢範例
+
+## SQL查詢範例
 
 以下是更完整的範例。 對於此查詢：
 
@@ -89,7 +92,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 
 <a id="what-sql-doesnt-do"></a>
 
-### SQL不會執行的動作
+## SQL不會執行的動作
 
 SQL故意很小。 這可讓查詢保持安全、快速且與租使用者隔離。 若您需要其中一項功能，請使用替代方案。
 

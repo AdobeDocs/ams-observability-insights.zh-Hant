@@ -1,9 +1,12 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: 儀表板Blueprint
+description: 使用Blueprint建立可觀察性深入分析控制面板，以監控應用程式和基礎結構。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '1311'
+source-wordcount: '1324'
 ht-degree: 1%
 ---
+
 ## 儀表板Blueprint {#dashboard-blueprints}
 
 每個Blueprint都是完整、複雜的儀表板。 它列出目標、索引標籤和區段配置，以及每個具有其圖表型別、單位、臨界值、大小和查詢的Widget。 在12欄格線上，大小為`width×height`。 從上到下逐一建置，然後拖曳加以調整。
@@ -23,11 +26,11 @@ ht-degree: 1%
 
 **圖表圖例：** **N** =數字，**L** =折線，**A** =區域，**B** =長條，**P** =圓餅圖，**T** =表格。
 
-&#x200B;---
+
 
 ### Golden Signals / SLO板
 
-**目標：**&#x200B;一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
+**目標：**一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
 **時間選擇器：**&#x200B;過去1小時（事件）或24小時（每日檢閱）。
 
 ```text
@@ -120,7 +123,7 @@ SELECT average(value) AS memory FROM MemoryUtilization FACET host TIMESERIES AUT
 SELECT average(value) AS load5m FROM LoadAverage5m FACET host TIMESERIES AUTO LIMIT 10
 ```
 
-&#x200B;---
+
 
 ### 錯誤分類面板
 
@@ -207,7 +210,7 @@ SELECT count(*) AS failures, percentile(duration, 95) AS p95 FROM Span WHERE kin
 SELECT timestamp, service, host, name, urlPath, http.statusCode, duration, statusMessage, traceId FROM Transaction WHERE status = 'Error' LIMIT 200
 ```
 
-&#x200B;---
+
 
 ### 延遲深度板
 
@@ -276,7 +279,7 @@ SELECT sum(callCount) AS calls, average(avgDurationMs) AS avgMs FROM SpanBreakdo
 SELECT count(*) AS calls, max(duration) AS slowestMs, latest(traceId, duration) AS slowestTraceId, latest(host, duration) AS slowestHost FROM Transaction FACET name ORDER BY slowestMs DESC LIMIT 50
 ```
 
-&#x200B;---
+
 
 ### 下游相依性面板
 
@@ -357,11 +360,11 @@ SELECT count(*) FILTER (WHERE kind = 'Producer') AS produced, count(*) FILTER (W
 SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE status = 'Error') AS errorPct FROM Span WHERE rpc.system != '' FACET service, rpc.system, rpc.method ORDER BY calls DESC LIMIT 50
 ```
 
-&#x200B;---
+
 
 ### AEM作者/發佈/Dispatcher展示板
 
-**目標：**&#x200B;依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
+**目標：**依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
 使用名為`PUBLISH`、`AUTHOR`、`DISPATCHER`的&#x200B;**區段標題**&#x200B;以及結尾包含`- PUBLISH` / `- AUTHOR`的Widget標題來取得色彩提示。
 
 ```text
@@ -514,11 +517,11 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != '' FACET sling.servlet LIMIT 20
 ```
 
-&#x200B;---
+
 
 ### 基礎架構容量板
 
-**目標：**&#x200B;跨主機的容量規劃和飽和度捕捉。
+**目標：**跨主機的容量規劃和飽和度捕捉。
 **時間選擇器：** 7天用於趨勢（統計可讓此速度更快），1小時用於事件。
 
 ```text
@@ -661,7 +664,7 @@ SELECT rate(value) AS v FROM NetworkTransmitRate WHERE host = 'web-publish-01' T
 netRx + netTx
 ```
 
-&#x200B;---
+
 
 ### JVM健康情況展示板
 
@@ -733,7 +736,8 @@ SELECT average(value) AS v FROM JvmHeapLimit TIMESERIES AUTO
 (used / limit) * 100
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 若要將公式範圍設定為單一主機，請新增`WHERE host = 'my-publish-01'`至&#x200B;**both**&#x200B;個查詢。
 
 **W6 ·主機使用的棧積** — L， `MB`， 6×4
@@ -766,7 +770,7 @@ SELECT average(value) AS jvmCpu FROM JvmCpuRecentUtilization FACET host TIMESERI
 SELECT latest(value) AS bytesUsed, max(value) AS peakBytes FROM MetricSum WHERE metric = 'jvm.memory.used' FACET host, pool ORDER BY peakBytes DESC LIMIT 100
 ```
 
-&#x200B;---
+
 
 ### 11.8高階主管/NOC牆上型主機板
 
@@ -849,7 +853,7 @@ SELECT count(*) AS requests FROM Transaction WHERE hostTierPrefix != '' FACET ho
 
 **W10 · SLO備註** — 文字Widget，12×1。
 
-&#x200B;---
+
 
 ### 比例與預留空間展示板（公式展示）
 
@@ -995,13 +999,14 @@ SELECT count(*) AS v FROM Transaction TIMESERIES AUTO
 (errors / total) / 0.001
 ```
 
-&#x200B;---
+
 
 ### 服務總管（變數驅動）
 
 **目標：**&#x200B;任何團隊都可以指向&#x200B;_其_&#x200B;服務和環境的一個展示板。
 
-&#x200B;> [!WARNING]
+>[!WARNING]
+>
 > 請參閱[教學課程3步驟8.7](#87-make-dashboards-reusable-with-variables)中的&#x200B;**目前組建限制**：尚未預覽或儲存Widget SQL中的`{{variables}}`。 在修正之前，請以常值取代每個`{{…}}` （例如`'checkout'`），並使用&#x200B;_複製_&#x200B;來複製每個服務的展示板。 當支援端對端替代時，以下的設計已準備就緒。
 
 **變數**

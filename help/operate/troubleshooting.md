@@ -1,9 +1,12 @@
 ---
-source-git-commit: ec98f6bd132cadaba1da7c4fb727d7e031790645
+title: 疑難排解
+description: 疑難排解Observability Insights中的SQL查詢、圖表和控制面板。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '327'
+source-wordcount: '337'
 ht-degree: 5%
 ---
+
 ## 疑難排解 {#troubleshooting}
 
 當您&#x200B;**驗證**&#x200B;或&#x200B;**執行**&#x200B;查詢時，錯誤訊息會顯示在編輯器下方，並在儀表板上的Widget本身上顯示。 在第一欄中找到訊息。

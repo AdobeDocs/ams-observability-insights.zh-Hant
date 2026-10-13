@@ -1,9 +1,12 @@
 ---
-source-git-commit: ec98f6bd132cadaba1da7c4fb727d7e031790645
+title: 效能
+description: 改善「可觀察性深入分析」中的查詢、圖表和控制面板效能。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '217'
-ht-degree: 2%
+source-wordcount: '227'
+ht-degree: 3%
 ---
+
 ## 效能 {#performance}
 
 每個查詢都會以15秒逾時和位元組讀取預算執行。 此檔案說明可觀察性深入分析如何自動加速查詢，以及如何設計在任何時間範圍內保持快速的控制面板。

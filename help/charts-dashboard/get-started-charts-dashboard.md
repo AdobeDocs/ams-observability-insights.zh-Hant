@@ -1,9 +1,12 @@
 ---
-source-git-commit: 05ed98c07602488843c52cd262af2d8cc204fef1
+title: 開始使用圖表和儀表板
+description: 瞭解如何使用圖表和儀表板以視覺化方式呈現「可觀察性深入分析」資料。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '292'
-ht-degree: 3%
+source-wordcount: '309'
+ht-degree: 2%
 ---
+
 ## 圖表和控制面板：視覺化您的資料 {#charts-and-dashboards-visualizing-your-data}
 
 查詢會尋找您需要的資訊。 圖表和控制面板可讓這些資訊對您的組織有所助益。 本檔案說明SQL結果如何變成圖表，以及如何建置、組織和共用儀表板。

@@ -1,9 +1,12 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: 教學課程4：進階函式
+description: 瞭解如何使用進階SQL函式來分析Observability Insights遙測。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '491'
+source-wordcount: '507'
 ht-degree: 1%
 ---
+
 ## 教學課程4：進階函式 {#tutorial-4-advanced-functions}
 
 本教學課程涵蓋支援更深入調查的功能和實體：變異性、成長性、「最差範例」查閱、總計份額、交易構成和任意OpenTelemetry量度。
@@ -64,7 +67,8 @@ SELECT sum(callCount) AS calls, average(avgDurationMs) AS avgMs FROM SpanBreakdo
 SELECT average(avgDurationMs) AS avgMs FROM SpanBreakdown FACET segment TIMESERIES AUTO LIMIT 8
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > `avgDurationMs`未使用單位自動標籤。 將Widget **Unit**&#x200B;設定為`ms`。
 
 ### 探索及查詢任何量度
@@ -91,7 +95,8 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 SELECT count(*) FILTER (WHERE http.route != '') AS withRoute, count(*) FILTER (WHERE db.system != '') AS dbCalls, count(*) FILTER (WHERE peer.service != '') AS withPeer, count(*) FILTER (WHERE error.type != '') AS withErrorType FROM Span FACET service LIMIT 50
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > 當已組織的實體存在時（例如`CpuUtilization`），會偏好使用它而非`MetricGauge`。 它會套用正確的篩選器和單位轉換，而且可能是向上彙整加速。
 
 ### 選擇正確的追蹤實體

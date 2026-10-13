@@ -1,9 +1,12 @@
 ---
-source-git-commit: d3cd77e213674587152d6d33efa65328f420a547
+title: 如何使用SQL查詢
+description: 瞭解如何在Observability Insights中撰寫和執行SQL查詢。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '538'
+source-wordcount: '554'
 ht-degree: 0%
 ---
+
 ## 如何使用SQL進行查詢：查詢的機制 {#how-to-query-with-sql-the-mechanics-of-querying}
 
 在使用任何工具之前，先瞭解其運作方式會有所幫助。 本檔案說明如何探索您的資料、說明查詢執行時會發生什麼情況，並逐步說明從簡單到複雜的範例查詢。
@@ -12,7 +15,8 @@ ht-degree: 0%
 
 使用SQL的最佳方式是開啟&#x200B;**探索**，並在您自己的資料上試用。
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > SQL是唯讀的。 它無法變更或刪除資料，而且每個查詢的範圍都屬於您的租使用者。
 
 1. **在應用程式頂端的租使用者切換器中挑選客戶**，SQL需要單一租使用者。
@@ -37,7 +41,8 @@ FROM Transaction SELECT count(*) FACET service
 
 這會計算每個服務的請求數，以顯示您要報告的服務。
 
-&#x200B;> [!IMPORTANT]
+>[!IMPORTANT]
+>
 > **在您建置之前探索。** 屬性可用性取決於每項服務的檢測方式。 先在新租使用者上執行[探索查詢](#101-data-discovery)，以檢視哪些服務、主機、屬性和量度實際包含資料。
 
 ### 查詢的執行方式
@@ -87,5 +92,6 @@ flowchart LR
 | **探索** | 全域時間選擇器。 選取器範圍作用中時會忽略`SINCE`/`UNTIL`。 |
 | **沒有明確範圍的API** | `SINCE`/`UNTIL`在查詢中，預設為過去一小時。 |
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 由於選擇器會在控制面板和Explore中獲勝，因此本指南通常會將`SINCE`排除在控制面板查詢之外。 使用者應該一律為查詢定義時間選擇器。

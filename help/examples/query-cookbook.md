@@ -1,16 +1,20 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: 查詢逐步指南
+description: 使用SQL查詢方法在「可觀察性深入分析」中調查應用程式和基礎結構遙測。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '565'
+source-wordcount: '580'
 ht-degree: 0%
 ---
+
 ## 查詢逐步指南 {#query-cookbook}
 
 逐步指南是現成可用的查詢資料庫，依主題分組。 每個查詢前面都有一個最適合它的圖表型別，以&#x200B;**粗體**&#x200B;表示。 時間子句會被省略，因為時間選擇器會控制視窗。
 
 **在此檔案中：** [10.1資料探索](#101-data-discovery) · [10.2輸送量](#102-throughput) · [10.3延遲](#103-latency) · [10.4錯誤](#104-errors) · [10.5 Apdex](#105-apdex--user-experience) · [10.6服務和主機](#106-services-hosts--instances) · [10.7相依性](#107-downstream-dependencies) · [10.8 AEM](#108-aem-adobe-experience-manager) · [10.9相依性基礎架構](#109-infrastructure) · [10.10 JVM](#1010-jvm--runtime)
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > 將範例值（例如`'checkout'`或`'web-publish-01'`）取代為您租使用者的實際值。 以下的資料探索查詢會列出這些查詢。
 
 ### 資料探索
@@ -385,7 +389,8 @@ SELECT average(value) AS cpu FROM CpuUtilization FACET host TIMESERIES AUTO
 SELECT average(value) AS userPct FROM CpuUserPercent TIMESERIES AUTO
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > SQL會讀取每個查詢的一個實體，因此user/system/iowait/steeve需要四個並排的Widget （請參閱[blueprint 11.6](#116-infrastructure-capacity-board) W7-W10）。 公式會將其摺疊為一個數字，而不是四個系列。
 
 **列** — 依主機的CPU p95：
