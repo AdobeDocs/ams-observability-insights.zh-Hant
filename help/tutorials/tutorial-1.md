@@ -1,17 +1,15 @@
 ---
 title: 教學課程1：您的第一個查詢
 description: 針對可觀察性深入分析遙測編寫您的第一個SQL查詢。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 52cc24792c47727700428be58b5bbb2a5c7223d2
 workflow-type: tm+mt
-source-wordcount: '576'
+source-wordcount: '552'
 ht-degree: 0%
 ---
 
 ## 教學課程1：您的第一個查詢 {#tutorial-1-your-first-queries}
 
 歡迎使用SQL。 在本教學課程中，您將撰寫第一個查詢、控制時間範圍、繪製趨勢、篩選和分組結果，並將第一個圖表放在儀表板上。 每個步驟都建立在上一個步驟之上。
-
-**在本教學課程中：** [在您開始之前](#before-you-begin) · [6.1查詢事件](#61-query-events-with-select-from-and-limit) · [6.2彙總](#62-aggregate-your-data) · [6.3數個彙總](#63-return-several-aggregates-at-once) · [6.4時間視窗](#64-set-the-time-window) · [6.5時間序列](#65-plot-trends-with-timeseries) · [6.6位置](#66-filter-with-where) · [6.7 FACET](#67-group-with-facet) · [6.8儲存至儀表板](#68-save-your-query-to-a-dashboard)
 
 ### 開始之前
 
@@ -35,7 +33,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 列會依第一欄遞減排序，所以將`timestamp`放在第一位，您最新的請求就會顯示在最上方。
 
->[!NOTE]
+> **附註**
 >
 > SQL沒有`SELECT *`。 列出屬性可讓結果保持小規模且易於讀取。 [資料字典](#data-dictionary)和編輯器中的自動完成會顯示可用的內容。
 
@@ -69,7 +67,7 @@ SELECT uniqueCount(host) FROM Transaction
 SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs FROM Transaction
 ```
 
->[!TIP]
+> **提示**
 >
 > 別名會變成欄標題和圖例標籤，而它們就是您在`ORDER BY`中參照的內容。 養成命名每個彙總的習慣。
 
@@ -89,7 +87,7 @@ SELECT count(*) AS requests FROM Transaction SINCE 2 days ago UNTIL 1 day ago
 
 單位可以是`second`、`minute`、`hour`、`day`或`week`。 視窗最多可為31天。
 
->[!IMPORTANT]
+> **重要**
 >
 > 在&#x200B;**瀏覽**&#x200B;和&#x200B;**儀表板**&#x200B;中，頁面頂端的&#x200B;**時間選擇器**&#x200B;會控制視窗並覆寫`SINCE`/`UNTIL`。 若要檢視其他期間，請變更選擇器。 本指南的其餘部分則因此將`SINCE`保留在儀表板查詢之外。
 
@@ -127,7 +125,7 @@ SELECT count(*) AS slowOrFailed FROM Transaction WHERE service = 'checkout' AND 
 SELECT count(*) AS contentRequests FROM Transaction WHERE urlPath LIKE '/content/%'
 ```
 
->[!NOTE]
+> **附註**
 >
 > 字串值區分大小寫，且使用單引號： `'Error'`，而非`"Error"`或`'error'`。 以您租使用者的服務取代`checkout`。 下一個步驟將說明如何列出這些變數。
 

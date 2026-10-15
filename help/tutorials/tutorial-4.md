@@ -1,17 +1,15 @@
 ---
 title: 教學課程4：進階函式
 description: 瞭解如何使用進階SQL函式來分析Observability Insights遙測。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '507'
+source-wordcount: '483'
 ht-degree: 1%
 ---
 
 ## 教學課程4：進階函式 {#tutorial-4-advanced-functions}
 
 本教學課程涵蓋支援更深入調查的功能和實體：變異性、成長性、「最差範例」查閱、總計份額、交易構成和任意OpenTelemetry量度。
-
-**在本教學課程中：** [9.1 stddev](#91-measure-consistency-with-stddev) · [9.2衍生](#92-spot-growth-with-derivative) · [9.3排名最新](#93-find-the-worst-example-with-ranked-latest) · [9.4 percentOfTotal](#94-find-where-time-goes-with-percentoftotal) · [9.5 SpanBreakdown](#95-break-down-transactions-with-spanbreakdown) · [9.6任何量度](#96-discover-and-query-any-metric) · [9.7選擇實體](#97-choose-the-right-trace-entity) · [9.8巢狀彙總](#98-work-around-nested-aggregation)
 
 ### 與`stddev`的量值一致性
 
@@ -124,9 +122,9 @@ SELECT count(*) AS calls, percentage(*, WHERE status = 'Error') AS errorPct, per
 NRQL可讓您彙總具有子查詢的彙總，例如「每主機最大值的平均值」。 SQL不會。 以下是替代方案：
 
 | 目標 | SQL方法 |
-| --------------------------------------- | ---------------------------------------------------------- |
+| --------------------------------------- | -------------------------------------------------------------------- |
 | 依群組的值，然後為群組排名 | `FACET group` + `ORDER BY alias` + `LIMIT` |
-| 兩個彙總的比率 | [公式Widget](#86-combine-queries-with-formula-widgets) |
+| 兩個彙總的比率 | [公式Widget](tutorial-3.md#combine-queries-with-formula-widgets) |
 | 每個主機的值，然後是「最差主機」 | `FACET host ORDER BY alias DESC LIMIT 1` |
 | 一段時間內每個主機的平均值 | `FACET host TIMESERIES AUTO`，並讀取序列 |
 

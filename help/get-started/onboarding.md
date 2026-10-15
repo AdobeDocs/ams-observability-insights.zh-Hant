@@ -12,9 +12,9 @@ feature_v2:
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
+source-git-commit: d8c86bf4873a9eef6ce9bbcca5a545aa4e862e5f
 workflow-type: tm+mt
-source-wordcount: '533'
+source-wordcount: '518'
 ht-degree: 0%
 ---
 
@@ -65,6 +65,6 @@ Adobe使用Observability Insights APM Java外掛程式來監控AEM的製作和�
 
 **開始使用** — 此節。 涵蓋存取、帳戶布建、監控範圍和資料保留。
 
-**[使用可觀察性深入分析](../use-observability-insights.md)** — 以任務為導向的日常調查指引。 當症狀是面向應用程式時，請使用[應用程式](../applications.md)：頁面速度慢、錯誤尖峰或不穩定的交易。 當您需要判斷主機層級的資源壓力（CPU、記憶體、磁碟或網路）是否說明您在應用程式中看到的內容時，請使用[主機](../hosts.md)。 在[調查應用程式問題](../use-cases/investigate-application-issues.md)和[調查基礎結構問題](../use-cases/investigate-infrastructure-issues.md)中可以使用逐步調查流程。
+**[使用可觀察性深入分析](../use-observability-insights.md)** — 以任務為導向的日常調查指引。 當症狀是面向應用程式時，請使用[應用程式](../applications.md)：頁面速度慢、錯誤尖峰或不穩定的交易。 當您需要判斷主機層級的資源壓力（CPU、記憶體、磁碟或網路）是否說明您在應用程式中看到的內容時，請使用[主機](../hosts.md)。
 
 **[常見問題](../troubleshooting/common-questions.md)** — 當您不確定從何處開始或在使用中事件期間需要快速解答時，的常見問題和支援導向的進入點。
