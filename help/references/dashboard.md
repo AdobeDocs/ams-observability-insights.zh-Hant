@@ -40,7 +40,7 @@ ht-degree: 4%
 |                 | [13. 疑難排解](#13-troubleshooting) | 每個錯誤訊息、其含義以及如何加以修正 |
 |                 | [14. 附錄](#14-appendix) | 限制、匯出檔案格式、單頁速查表 |
 
-# 快速入門
+&#x200B;# 快速入門
 
 ## &#x200B;1. 開始使用SQL：遙測的語言
 
@@ -488,7 +488,7 @@ SQL故意很小。 這可讓查詢保持安全、快速且與租使用者隔離�
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **儲存** | 儲存名稱、標籤、Widget、版面配置和變數。 每個Widget查詢都會在伺服器端重新驗證；一個無效的Widget會導致整個儲存失敗。 |
 | **匯出** | 下載`<dashboard-name>.json` （標籤、Widget、變數）。 |
-| **匯入** | 將JSON匯出&#x200B;**載入開啟的儀表板**，取代其索引標籤和變數。 然後按一下[儲存]。**** 秘訣：先建立空白的控制面板，然後匯入其中。 |
+| **匯入** | 將JSON匯出&#x200B;**載入開啟的儀表板**，取代其索引標籤和變數。 然後按一下[儲存]。**&#x200B;** 秘訣：先建立空白的控制面板，然後匯入其中。 |
 | **CSV / PNG** | 從Widget標題下載每個Widget。 |
 
 >[!TIP]
@@ -505,7 +505,7 @@ SQL故意很小。 這可讓查詢保持安全、快速且與租使用者隔離�
 
 [↑回頂端](#top)
 
-# 參照
+&#x200B;# 參照
 
 ## &#x200B;4. SQL參考
 
@@ -782,7 +782,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 <details>
 <summary><code>apdex(attribute, T)</code></summary>
 
-使用屬性單位中的臨界值`T` （3}的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
+使用屬性單位中的臨界值`T` （3&rbrace;的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
 
 | 貯體 | 條件 | 粗細 |
 | ---------- | ------------------------------------ | ------ |
@@ -1194,7 +1194,7 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 
 [↑回頂端](#top)
 
-# 教學課程
+&#x200B;# 教學課程
 
 ## &#x200B;6. 教學課程1：您的第一個查詢
 
@@ -1828,7 +1828,7 @@ SELECT percentile(duration, 95) AS p95 FROM Transaction FACET host ORDER BY p95 
 
 [↑回頂端](#top)
 
-# 範例
+&#x200B;# 範例
 
 ## &#x200B;10. 查詢逐步指南
 
@@ -2353,7 +2353,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 
 ### 11.1 Golden Signals / SLO板
 
-**目標：**一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
+**目標：**&#x200B;一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
 **時間選擇器：**&#x200B;過去1小時（事件）或24小時（每日檢閱）。
 
 ```text
@@ -2679,7 +2679,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### 11.5 AEM作者/發佈/Dispatcher展示板
 
-**目標：**依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
+**目標：**&#x200B;依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
 使用名為`PUBLISH`、`AUTHOR`、`DISPATCHER`的&#x200B;**區段標題**&#x200B;以及結尾包含`- PUBLISH` / `- AUTHOR`的Widget標題來取得色彩提示。
 
 ```text
@@ -2834,7 +2834,7 @@ SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != ''
 
 ### 11.6基礎架構容量板
 
-**目標：**跨主機的容量規劃和飽和度捕捉。
+**目標：**&#x200B;跨主機的容量規劃和飽和度捕捉。
 **時間選擇器：** 7天用於趨勢（統計可讓此速度更快），1小時用於事件。
 
 ```text
@@ -3385,7 +3385,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 
 [↑回頂端](#top)
 
-# 操作
+&#x200B;# 操作
 
 ## &#x200B;12. 效能
 
