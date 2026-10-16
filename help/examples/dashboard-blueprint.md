@@ -17,7 +17,7 @@ ht-degree: 1%
 
 ### Golden Signals / SLO板
 
-**目標：**一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
+**目標：**&#x200B;一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
 **時間選擇器：**&#x200B;過去1小時（事件）或24小時（每日檢閱）。
 
 ```text
@@ -351,7 +351,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### AEM作者/發佈/Dispatcher展示板
 
-**目標：**依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
+**目標：**&#x200B;依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
 使用名為`PUBLISH`、`AUTHOR`、`DISPATCHER`的&#x200B;**區段標題**&#x200B;以及結尾包含`- PUBLISH` / `- AUTHOR`的Widget標題來取得色彩提示。
 
 ```text
@@ -508,7 +508,7 @@ SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != ''
 
 ### 基礎架構容量板
 
-**目標：**跨主機的容量規劃和飽和度捕捉。
+**目標：**&#x200B;跨主機的容量規劃和飽和度捕捉。
 **時間選擇器：** 7天用於趨勢（統計可讓此速度更快），1小時用於事件。
 
 ```text
