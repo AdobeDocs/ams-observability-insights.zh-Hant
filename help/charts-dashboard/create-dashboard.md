@@ -1,9 +1,9 @@
 ---
 title: 建立儀表板
 description: 瞭解如何建立、設定、儲存和共用Observability Insights控制面板。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 2e851e1a3d9f8fbdb220ecd0d37fba0f6b0188df
 workflow-type: tm+mt
-source-wordcount: '1129'
+source-wordcount: '1128'
 ht-degree: 1%
 ---
 
@@ -39,9 +39,9 @@ ht-degree: 1%
 | **格線** | 12欄。 拖曳Widget，從角落調整大小（最小2×2）。 |
 | **Widget標頭** （暫留時） | 下載CSV、下載PNG、編輯、複製、移除、拖曳控點 |
 
->[!IMPORTANT]
+> **重要**
 >
-> **儲存是明確的。** 版面配置變更、新Widget、標籤和變數會保留在瀏覽器中，直到您按一下[儲存] **為止**。 按鈕顯示&#x200B;_正在儲存……→已儲存_，或&#x200B;_儲存失敗_ （請參閱[疑難排解](#troubleshooting)）。
+> **儲存是明確的。** 版面配置變更、新Widget、標籤和變數會保留在瀏覽器中，直到您按一下[儲存] **為止**。 按鈕顯示&#x200B;_正在儲存……→已儲存_，或&#x200B;_儲存失敗_ （請參閱[疑難排解](../operate/troubleshooting.md)）。
 
 ### 步驟4：新增Widget
 
@@ -64,7 +64,7 @@ ht-degree: 1%
 3. 使用&#x200B;**查詢指南**&#x200B;面板來瀏覽實體、屬性和範例。
 4. 按一下&#x200B;**執行查詢**。 您會看到&#x200B;_`<Entity>`查詢有效_、即時預覽和摘要(`N rows · N time points · N groups`)。 少於三個時間點時，會出現&#x200B;_稀疏序列_&#x200B;警告。
 
->[!TIP]
+> **提示**
 >
 > 產生器涵蓋最常見的查詢。 切換至`apdex`、`percentage`、`rate`、`FILTER`、多個彙總、`OR`、`IN`、多個Facet或`ORDER BY`的SQL。
 
@@ -101,7 +101,7 @@ ht-degree: 1%
 - **附註**：純文字（最多4,000個字元，保留空白行）。 將其用於Runbook連結、擁有者和SLO定義。 已轉譯`{{variables}}`。
 - **區段標頭**：勾選&#x200B;_讓此成為區段標頭_。 它會橫跨整個寬度，其>形箭號會摺疊其下方的每個Widget，一直摺疊到下一個區段標題。 將其用於&#x200B;**PUBLISH**、**AUTHOR**&#x200B;和&#x200B;**DISPATCHER**&#x200B;等群組。
 
->[!TIP]
+> **提示**
 >
 > 以`- PUBLISH`或`- AUTHOR`結尾的Widget標題會獲得細微的顏色提示，讓AEM儀表板更易於依層級掃描。
 
@@ -116,15 +116,15 @@ ht-degree: 1%
 
 ## 變數
 
-變數可讓一個儀表板同時提供許多內容，例如一個服務、環境或臨界值。 這些內容在[教學課程3](#87-make-dashboards-reusable-with-variables)中有深入說明。
+變數可讓一個儀表板同時提供許多內容，例如一個服務、環境或臨界值。 這些內容在[教學課程3](../tutorials/tutorial-3.md#make-dashboards-reusable-with-variables)中有深入說明。
 
->[!WARNING]
+> **警告**
 >
 > **目前組建中的已知限制：** `{{variables}}`適用於Widget **標題**&#x200B;和&#x200B;**文字Widget**。 在Widget **SQL**&#x200B;中，它們會在儀表板上轉譯，但&#x200B;**新增Widget**&#x200B;預覽和伺服器端&#x200B;**儲存**&#x200B;檢查會以`Unexpected character '{'`拒絕原始`{{name}}`權杖。 在修正此問題之前，請在Widget查詢中使用常值，並使用&#x200B;**Duplicate**&#x200B;來製作變體。
 
 ## 公式Widget
 
-公式以運算方式結合2-6個具名SQL查詢，例如`(errors / total) * 100`。 當KPI需要多個查詢（例如比率、淨餘空間、比率總和或燃耗率）時，請使用其中一個查詢。 請參閱[教學課程3](#86-combine-queries-with-formula-widgets)。
+公式以運算方式結合2-6個具名SQL查詢，例如`(errors / total) * 100`。 當KPI需要多個查詢（例如比率、淨餘空間、比率總和或燃耗率）時，請使用其中一個查詢。 請參閱[教學課程3](../tutorials/tutorial-3.md#combine-queries-with-formula-widgets)。
 
 ## 共用、匯出和匯入
 
@@ -135,9 +135,9 @@ ht-degree: 1%
 | **匯入** | 將JSON匯出&#x200B;**載入開啟的儀表板**，取代其索引標籤和變數。 然後按一下[儲存]。**&#x200B;** 秘訣：先建立空白的控制面板，然後匯入其中。 |
 | **CSV / PNG** | 從Widget標題下載每個Widget。 |
 
->[!TIP]
+> **提示**
 >
-> 匯出和匯入可讓您在Git中版本控制儀表板，以及將儀表板從一個客戶提升到另一個客戶。 檔案格式在[附錄](#142-export-file-format)中說明。
+> 匯出和匯入可讓您在Git中版本控制儀表板，以及將儀表板從一個客戶提升到另一個客戶。 檔案格式在[附錄](../operate/appendix.md)中說明。
 
 ## 控制面板和圖表效能的提示
 
@@ -146,4 +146,4 @@ ht-degree: 1%
 - **一律`LIMIT`多面查詢**，尤其是在`urlPath`、`traceId`和`jcr.path`等高基數屬性上。
 - **在低基數屬性(`service`、`kind`、`status`)上篩選早期**。
 - **偏好使用`TIMESERIES AUTO`**&#x200B;而非固定的小值區，而且除了幾分鐘以外，請避免`TIMESERIES MAX`。
-- **設計統計的長範圍趨勢。** 請參閱[效能](#performance)。
+- **設計統計的長範圍趨勢。** 請參閱[效能](../operate/performance.md)。

@@ -1,17 +1,15 @@
 ---
 title: 教學課程3：推進您的儀表板
 description: 在Observability Insights中使用變數、公式和多個Widget來建立儀表板。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '902'
+source-wordcount: '879'
 ht-degree: 3%
 ---
 
 ## 教學課程3：推進您的儀表板 {#tutorial-3-advance-your-dashboarding}
 
 在本教學課程中，您將建立生產等級儀表板的元件：使用者體驗分數、計數器比率、案例分組、長條圖、具有臨界值的KPI圖磚、區段、公式Widget和變數。
-
-**在本教學課程中：** [8.1 apdex](#81-score-user-experience-with-apdex) · [8.2 rate](#82-turn-counters-into-rates-with-rate) · [8.3案例](#83-group-values-into-cases-with-filter) · [8.4長條圖](#84-build-a-latency-histogram) · [8.5 KPI圖磚和區段](#85-build-kpi-tiles-and-sections) · [8.6 Formula](#86-combine-queries-with-formula-widgets) · [8.7變數](#87-make-dashboards-reusable-with-variables) · [8.8放在一起](#88-put-it-together)
 
 ### 使用`apdex`為使用者體驗評分
 
@@ -29,7 +27,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 將它放入臨界值為`0 → Red`、`0.7 → Amber`、`0.85 → Green`的&#x200B;**數字**&#x200B;介面工具中。 最高的相符波段會獲勝，因此低分會維持紅色。
 
-### 8.2使用`rate`將計數器轉換為速率
+### 使用`rate`將計數器轉換為速率
 
 計數器實體（[資料字典](#53-curated-metric-entities)中的✔）會儲存不斷增加的總計。 `rate(value)`將其轉換為每秒的值。 它需要`TIMESERIES`，而且必須是唯一的彙總：
 
@@ -41,7 +39,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS writeBytesPerSec FROM DiskWriteRate FACET host, device TIMESERIES AUTO LIMIT 10
 ```
 
->[!WARNING]
+> **警告**
 >
 > 一律以`host` （和磁碟的`device`）面向`rate()`，或篩選為單一主機。 若沒有這些，來自不同主機的讀數會混合在一起，而結果毫無意義。
 
@@ -192,7 +190,7 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 當租使用者或時間選擇器變更時，選項會重新整理，而且會依字母順序排序。 當目前選取範圍不再有效時，會自動選取第一個值（單選）或所有值（多選）。 變數的查詢無法參考其他變數。
 
->[!WARNING]
+> **警告**
 >
 > **目前的組建限制。** 儀表板格線中會發生替代，但&#x200B;**新增Widget**&#x200B;預覽和&#x200B;**伺服器端儲存檢查**&#x200B;會接收原始`{{name}}`權杖並使用`Unexpected character '{'`加以拒絕。 實際操作中：
 >
@@ -203,4 +201,4 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### 整合在一起
 
-您現在已在[儀表板Blueprint](#dashboard-blueprints)中使用每個建置區塊：具有臨界值、區段、百分位數、Apdex、比率、大小寫欄、長條圖、公式和變數的KPI圖磚。 藍圖說明如何將它們結合為完整的黃金訊號、錯誤分類、AEM、基礎結構和JVM儀表板。
+您現在已在[儀表板Blueprint](../examples/dashboard-blueprint.md)中使用每個建置區塊：具有臨界值、區段、百分位數、Apdex、比率、大小寫欄、長條圖、公式和變數的KPI圖磚。 藍圖說明如何將它們結合為完整的黃金訊號、錯誤分類、AEM、基礎結構和JVM儀表板。

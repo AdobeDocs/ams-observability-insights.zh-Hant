@@ -1,17 +1,15 @@
 ---
 title: SQL參考
 description: 參考Observability Insights支援的SQL語法、子句和函式。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '1492'
-ht-degree: 9%
+source-wordcount: '1505'
+ht-degree: 11%
 ---
 
 ## SQL參考 {#sql-reference}
 
 此參考資料涵蓋SQL語法、子句、函式和運運算元。 展開每個專案以取得詳細資訊和範例。
-
-**在此檔案中：** [查詢元件](#41-query-components) · [必要子句](#42-required-clauses) · [選用子句](#43-optional-clauses) · [彙總函式](#44-aggregator-functions) · [運運算元和條件](#45-operators-and-conditions) · [型別處理](#46-type-handling-blank-vs-null) · [SQL至SQL](#47-translate-sql-to-sql) · [匯入現有的儀表板](#48-importing-existing-dashboards-to-insights)
 
 ### 查詢元件
 
@@ -31,14 +29,15 @@ FROM   <Entity>
 <unit>        := second | seconds | minute | minutes | hour | hours | day | days | week | weeks
 ```
 
->[!NOTE]
+> **附註**
 >
 > 上述`--`註解僅為檔案。 SQL本身不接受註解。
 
 ### 必要條款
 
-<details>
-<summary><code>SELECT</code> — 要傳回的專案</summary>
+#### `SELECT` — 要傳回的專案
+
++++檢視詳細資料
 
 `SELECT`列出&#x200B;**原始屬性** （事件查詢）或&#x200B;**彙總函式** （彙總查詢）。 您不能將兩者混合使用。
 
@@ -67,10 +66,11 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 - 不支援屬性或彙總(`sum(a) / count(*)`)之間的數學運算。 使用[公式小工具](#86-combine-queries-with-formula-widgets)。
 - 混合屬性和彙總失敗，因為&#x200B;_原始屬性不能與彙總混合；請使用FACET將結果分組_。
 
-</details>
++++
 
-<details>
-<summary><code>FROM</code> — 要查詢的實體</summary>
+#### `FROM` — 要查詢的實體
+
++++檢視詳細資料
 
 `FROM`名稱與[資料字典](#data-dictionary)中的&#x200B;**一個**&#x200B;實體完全相同。 實體名稱不區分大小寫。
 
@@ -84,12 +84,13 @@ FROM Span SELECT count(*) FACET kind
 
 每個實體都有固定的範圍。 例如，`Transaction`永遠是伺服器範圍，而`CpuUtilization`永遠是CPU忙碌量度，並將`value`轉換為百分比。 您無法在單一查詢中查詢多個實體。 若要合併實體，請使用[公式Widget](#86-combine-queries-with-formula-widgets)。
 
-</details>
++++
 
 ### 選擇性子句
 
-<details>
-<summary><code>AS</code> — 為欄加上標籤</summary>
+#### `AS` — 為欄加上標籤
+
++++檢視詳細資料
 
 使用`AS`為彙總或屬性提供可讀的名稱。 別名會變成欄標題、圖例標籤以及您在`ORDER BY`中參照的名稱。
 
@@ -103,10 +104,11 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT percentile(duration, 95) AS 'p95 latency (ms)' FROM Transaction TIMESERIES AUTO
 ```
 
-</details>
++++
 
-<details>
-<summary><code>FACET</code> — 群組結果</summary>
+#### `FACET` — 群組結果
+
++++檢視詳細資料
 
 `FACET`依據最多&#x200B;**5**&#x200B;個屬性（例如SQL `GROUP BY`）將結果分組。
 
@@ -127,10 +129,11 @@ SELECT count(*) AS requests FROM Transaction FACET service TIMESERIES AUTO LIMIT
 
 Facet值可以是字串或數字。 空白字串形成自己的群組。 使用`WHERE attr != ''`排除這些專案。
 
-</details>
++++
 
-<details>
-<summary><code>FILTER</code> — 條件彙總</summary>
+#### `FILTER` — 條件彙總
+
++++檢視詳細資料
 
 將`FILTER (WHERE condition)`附加至任何彙總，以計算資料列子集上的彙總。 這可讓您一次比較多個條件。
 
@@ -140,10 +143,11 @@ SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, pe
 
 `FILTER`不允許搭配`apdex`、`rate`或`derivative`使用。 `percentage`已採用自己的條件。
 
-</details>
++++
 
-<details>
-<summary><code>LIMIT</code> — 多少列或數列</summary>
+#### `LIMIT` — 多少列或數列
+
++++檢視詳細資料
 
 `LIMIT`採用正整數。 超過5,000的值會固定為5,000。
 
@@ -162,10 +166,11 @@ SELECT count(*) FROM Transaction FACET urlPath LIMIT 50
 >
 > 一律在查詢導向變數和高基數Facet (`urlPath`， `traceId`， `jcr.path`， `url`)上設定`LIMIT`。
 
-</details>
++++
 
-<details>
-<summary><code>ORDER BY</code> — 排序結果</summary>
+#### `ORDER BY` — 排序結果
+
++++檢視詳細資料
 
 `ORDER BY`依選取的&#x200B;**別名或選取的屬性**&#x200B;排序。 預設方向為`DESC`。
 
@@ -184,10 +189,11 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 - 參照未選取的專案失敗，因為&#x200B;_ORDER BY &#39;x&#39;必須參照選取的值或別名_。
 - 請勿將`ORDER BY`新增至`TIMESERIES`查詢。 它會覆寫圖表所需的時間順序。
 
-</details>
++++
 
-<details>
-<summary><code>SINCE</code> — 視窗的開始</summary>
+#### `SINCE` — 視窗的開始
+
++++檢視詳細資料
 
 `SINCE n unit [AGO]`設定回溯期間的開始時間。 單位： `second`、`minute`、`hour`、`day`、`week` （單數或複數）。 `AGO`是選用專案。
 
@@ -203,10 +209,11 @@ SELECT count(*) FROM Transaction SINCE 6 hours ago
 >
 > 在控制面板和Explore中，**時間選擇器會覆寫** `SINCE`和`UNTIL`。 請參閱[時間視窗優先順序](#time-window-precedence)。
 
-</details>
++++
 
-<details>
-<summary><code>TIMESERIES</code> — 繪製一段時間內</summary>
+#### `TIMESERIES` — 繪製一段時間內
+
++++檢視詳細資料
 
 `TIMESERIES`會針對每個時段（每個Facet值）傳回一列，為折線、區域或長條圖做好準備。
 
@@ -234,10 +241,11 @@ SELECT count(*) FROM Transaction TIMESERIES 1 hour SINCE 1 day ago
 >
 > 偏好儀表板上的`AUTO`。 不管時間選擇器怎麼說，它都會保留約120點。 這樣還可以避免每個主機的「損毀」行數，因為主機量度大約每90秒就會刮掉一次。
 
-</details>
++++
 
-<details>
-<summary><code>UNTIL</code> — 視窗結尾</summary>
+#### `UNTIL` — 視窗結尾
+
++++檢視詳細資料
 
 `UNTIL NOW` （預設）或`UNTIL n unit [AGO]`。 將其與`SINCE`結合，檢視過去的視窗：
 
@@ -247,10 +255,11 @@ SELECT count(*) AS yesterday FROM Transaction SINCE 2 days ago UNTIL 1 day ago
 
 `SINCE`必須早於`UNTIL`。 否則，查詢會失敗，並顯示&#x200B;_SINCE必須早於UNTIL_。
 
-</details>
++++
 
-<details>
-<summary><code>WHERE</code> — 篩選列</summary>
+#### `WHERE` — 篩選列
+
++++檢視詳細資料
 
 `WHERE`只會保留符合條件的列。 結合條件與`AND`、`OR`、`NOT`和括弧。 請參閱[運運算元和條件](#45-operators-and-conditions)。
 
@@ -260,7 +269,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 
 `WHERE`只能出現一次。 將所有條件都放進去。
 
-</details>
++++
 
 ### 彙總函式
 
@@ -283,8 +292,9 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 
 <a id="fn-apdex"></a>
 
-<details>
-<summary><code>apdex(attribute, T)</code></summary>
+#### `apdex(attribute, T)`
+
++++檢視詳細資料
 
 使用屬性單位中的臨界值`T` （3&rbrace;的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
 
@@ -302,12 +312,13 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service
 - `T`必須大於0。 不允許`FILTER`。
 - `Transaction`上的`apdex(duration, 500)`已透過長時段進行向上彙整加速。
 
-</details>
++++
 
 <a id="fn-average"></a>
 
-<details>
-<summary><code>average(attribute)</code> / <code>avg(attribute)</code></summary>
+#### `average(attribute)` / `avg(attribute)`
+
++++檢視詳細資料
 
 數值屬性的算術平均值。
 
@@ -315,12 +326,13 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service
 SELECT average(duration) AS avgMs FROM Transaction FACET service TIMESERIES AUTO
 ```
 
-</details>
++++
 
 <a id="fn-count"></a>
 
-<details>
-<summary><code>count(*)</code> / <code>count(attribute)</code></summary>
+#### `count(*)` / `count(attribute)`
+
++++檢視詳細資料
 
 - `count(*)`計入列。
 - `count(attribute)`計算屬性為&#x200B;**不是NULL**&#x200B;的資料列。 對於字串屬性，遺漏的值為空白(`''`)而非NULL，因此仍會計算它們（請參閱[型別處理](#46-type-handling-blank-vs-null)）。
@@ -329,12 +341,13 @@ SELECT average(duration) AS avgMs FROM Transaction FACET service TIMESERIES AUTO
 SELECT count(*) AS requests, count(http.statusCode) AS withStatusCode FROM Transaction
 ```
 
-</details>
++++
 
 <a id="fn-derivative"></a>
 
-<details>
-<summary><code>derivative(attribute)</code></summary>
+#### `derivative(attribute)`
+
++++檢視詳細資料
 
 連續貯體之間`average(attribute)`的每秒變更： （此貯體−上一個貯體）÷貯體秒數。 結果可能是負數。 將其用於量測計，以檢視值是否正在增加或縮小。
 
@@ -345,12 +358,13 @@ SELECT derivative(value) AS heapGrowthPerSec FROM JvmHeapUsed WHERE host = 'publ
 - 需要`TIMESERIES`，且必須是&#x200B;**僅限**&#x200B;彙總。 不允許`FILTER`。
 - 第一個貯體沒有前置任務。
 
-</details>
++++
 
 <a id="fn-latest"></a>
 
-<details>
-<summary><code>latest(attribute [, rankAttribute])</code> / <code>earliest(…)</code></summary>
+#### `latest(attribute [, rankAttribute])` / `earliest(…)`
+
++++檢視詳細資料
 
 - `latest(attr)`會傳回最近一列的值。 `earliest(attr)`會從最舊的資料列傳回值。
 - 使用第二個引數時，該屬性會選擇資料列，而非時間。 `latest(traceId, duration)`傳回&#x200B;**最慢**&#x200B;要求的追蹤識別碼。 `earliest(traceId, duration)`傳回最快。
@@ -363,12 +377,13 @@ SELECT latest(value) AS current FROM MemoryUtilization FACET host
 SELECT max(duration) AS slowestMs, latest(traceId, duration) AS slowestTrace FROM Transaction FACET name ORDER BY slowestMs DESC LIMIT 10
 ```
 
-</details>
++++
 
 <a id="fn-minmax"></a>
 
-<details>
-<summary><code>max(attribute)</code> / <code>min(attribute)</code></summary>
+#### `max(attribute)` / `min(attribute)`
+
++++檢視詳細資料
 
 最大或最小值。 適用於數字、字串和時間戳記。
 
@@ -376,12 +391,13 @@ SELECT max(duration) AS slowestMs, latest(traceId, duration) AS slowestTrace FRO
 SELECT min(duration) AS fastestMs, max(duration) AS slowestMs, max(timestamp) AS lastSeen FROM Transaction FACET service
 ```
 
-</details>
++++
 
 <a id="fn-percentage"></a>
 
-<details>
-<summary><code>percentage(*, WHERE condition)</code></summary>
+#### `percentage(*, WHERE condition)`
+
++++檢視詳細資料
 
 符合`condition`的資料列共用從0到100。
 
@@ -395,12 +411,13 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction
 
 `percentage`有自己的條件，因此不需要`FILTER`。
 
-</details>
++++
 
 <a id="fn-percentile"></a>
 
-<details>
-<summary><code>percentile(attribute, p)</code></summary>
+#### `percentile(attribute, p)`
+
++++檢視詳細資料
 
 近似的第p個百分位數，其中`0 < p ≤ 100`。 每個層級使用一個`percentile`。
 
@@ -410,12 +427,13 @@ SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percent
 
 `Transaction`上的p50、p95和p99透過長視窗進行彙總加速。
 
-</details>
++++
 
 <a id="fn-percentoftotal"></a>
 
-<details>
-<summary><code>percentOfTotal(attribute)</code></summary>
+#### `percentOfTotal(attribute)`
+
++++檢視詳細資料
 
 每個Facet資料列在數值屬性的&#x200B;**總和**&#x200B;中所佔的份額。 列數加起來為100%。
 
@@ -425,12 +443,13 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 
 不允許`TIMESERIES`。
 
-</details>
++++
 
 <a id="fn-rate"></a>
 
-<details>
-<summary><code>rate(attribute)</code></summary>
+#### `rate(attribute)`
+
++++檢視詳細資料
 
 **累積計數器**&#x200B;的每秒速率。 在每個貯體中，`rate`會取得每個數列的最高計數器讀數，並將其與上一個貯體做比較。 計數器重設設設為0，第一個貯體為0。
 
@@ -445,12 +464,13 @@ SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES 
 >
 > 一律為`FACET host`，或篩選為單一主機。 許多主機間未分面的`rate()`會比較不同主機的計數器，並產生無意義的數字。 磁碟計數器是依裝置而定，因此`FACET host, device`是最精確的。
 
-</details>
++++
 
 <a id="fn-stddev"></a>
 
-<details>
-<summary><code>stddev(attribute)</code></summary>
+#### `stddev(attribute)`
+
++++檢視詳細資料
 
 範例標準差。 將它與`average`搭配使用，以判斷延遲的一致程度。
 
@@ -458,12 +478,13 @@ SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES 
 SELECT average(duration) AS avgMs, stddev(duration) AS stddevMs FROM Transaction FACET name LIMIT 20
 ```
 
-</details>
++++
 
 <a id="fn-sum"></a>
 
-<details>
-<summary><code>sum(attribute)</code></summary>
+#### `sum(attribute)`
+
++++檢視詳細資料
 
 數值屬性的總數。
 
@@ -471,12 +492,13 @@ SELECT average(duration) AS avgMs, stddev(duration) AS stddevMs FROM Transaction
 SELECT sum(callCount) AS calls FROM SpanBreakdown FACET segment LIMIT 20
 ```
 
-</details>
++++
 
 <a id="fn-uniquecount"></a>
 
-<details>
-<summary><code>uniqueCount(attribute)</code></summary>
+#### `uniqueCount(attribute)`
+
++++檢視詳細資料
 
 **確切**&#x200B;數目的不重複值。
 
@@ -484,7 +506,7 @@ SELECT sum(callCount) AS calls FROM SpanBreakdown FACET segment LIMIT 20
 SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transaction FACET service
 ```
 
-</details>
++++
 
 函式限制一覽：
 
@@ -516,7 +538,7 @@ SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transacti
 SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND NOT host LIKE '%dispatcher%' AND http.method IN ('GET', 'POST')
 ```
 
->[!WARNING]
+> **警告**
 >
 > `attr = NULL`為錯誤。 使用`attr IS NULL`。
 
@@ -524,7 +546,7 @@ SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND
 
 目錄中的每個屬性都有型別： `string`、`number`、`boolean`或`timestamp`。 SQL型別檢查函式（例如，`average(service)`被拒絕）。 不需要或沒有可用的型別轉換函式。
 
->[!IMPORTANT]
+> **重要**
 >
 > **空白與NULL。** 大部分字串屬性來自OpenTelemetry屬性對應，其中&#x200B;_遺失_&#x200B;索引鍵會讀取為空字串`''`，而不是`NULL`。 若要只保留具有屬性的範圍，請使用&#x200B;**`attr != ''`**&#x200B;而非`IS NOT NULL`。 數值屬性（例如`http.statusCode`）不存在時實際上是`NULL`，因此`IS NOT NULL`適用於它們。
 
@@ -555,23 +577,23 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 如果您知道現有查詢，以下是移轉詳細資料
 
 | 現有查詢 | SQL | 備註 |
-| ------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `FROM Transaction SELECT count(*)` | 相同 | 支援`FROM`第一順序 |
 | `SINCE 1 day ago` | 相同 | 忽略儀表板；選擇器獲勝 |
 | `TIMESERIES AUTO` / `MAX` / `5 minutes` | 相同 | `AUTO`樓層是2分鐘 |
-| `FACET appName` | `FACET appName` / `FACET service` |                                                              |
-| `percentage(count(*), WHERE error IS true)` | `percentage(*, WHERE status = 'Error')` |                                                              |
+| `FACET appName` | `FACET appName` / `FACET service` |                                                                                  |
+| `percentage(count(*), WHERE error IS true)` | `percentage(*, WHERE status = 'Error')` |                                                                                  |
 | `filter(count(*), WHERE …)` | `count(*) FILTER (WHERE …)` | SQL標準表單 |
 | `apdex(duration, t: 0.5)` | `apdex(duration, 500)` | `duration`在&#x200B;**毫秒**&#x200B;內 |
 | `latest(x)` / `earliest(x)` | 相同 | 加上排名表單： `latest(x, rankAttr)` |
 | `uniqueCount(x)` | 相同 | 精確 |
 | `rate(count(*), 1 minute)` | `count(*)`與`TIMESERIES 1 minute` | SQL `rate()`僅適用於計數器 |
 | `derivative(x, 1 minute)` | `derivative(x)` + `TIMESERIES` | 每秒 |
-| `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                              |
-| `keyset()` / `SHOW EVENT TYPES` | [探索查詢](#101-data-discovery)或查詢指南面板 |                                                              |
-| `histogram(duration, …)` | `FILTER`個值區 | 請參閱[教學課程3](#84-build-a-latency-histogram) |
-| `FACET CASES (…)` | `FILTER`欄 | 請參閱[教學課程3](#83-group-values-into-cases-with-filter) |
+| `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                                                  |
+| `keyset()` / `SHOW EVENT TYPES` | [探索查詢](../examples/query-cookbook.md#data-discovery)或查詢指南面板 |                                                                                  |
+| `histogram(duration, …)` | `FILTER`個值區 | 請參閱[教學課程3](../tutorials/tutorial-3.md#build-a-latency-histogram) |
+| `FACET CASES (…)` | `FILTER`欄 | 請參閱[教學課程3](../tutorials/tutorial-3.md#group-values-into-cases-with-filter) |
 | `COMPARE WITH 1 week ago` | 不支援 | 變更時間選擇器，或透過API使用`SINCE … UNTIL …` |
-| `RLIKE` | `LIKE` / `IN` |                                                              |
-| `SELECT`中的數學/巢狀彙總 | **公式** Widget |                                                              |
-| `WITH TIMEZONE`, `EXTRAPOLATE`, `SLIDE BY` | 不支援 |                                                              |
+| `RLIKE` | `LIKE` / `IN` |                                                                                  |
+| `SELECT`中的數學/巢狀彙總 | **公式** Widget |                                                                                  |
+| `WITH TIMEZONE`, `EXTRAPOLATE`, `SLIDE BY` | 不支援 |                                                                                  |

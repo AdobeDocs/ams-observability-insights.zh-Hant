@@ -1,17 +1,15 @@
 ---
 title: 教學課程2：控制您的資料
 description: 瞭解如何在可觀察性深入分析中篩選、分組和控制查詢結果。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '361'
+source-wordcount: '337'
 ht-degree: 0%
 ---
 
 ## 教學課程2：控制您的資料 {#tutorial-2-control-your-data}
 
 在本教學課程中，您將學習將原始計數轉換為答案的函式和子句：相異計數、最新值、百分比、百分位數、萬用字元、排序和多維度分組。
-
-**在本教學課程中：** [7.1 uniqueCount](#71-count-distinct-values-with-uniquecount) · [7.2 latest/earliest](#72-find-the-latest-and-earliest-values) · [7.3百分比](#73-calculate-percentages) · [7.4百分位數](#74-understand-latency-with-percentile) · [7.5標籤](#75-make-results-readable-with-labels) · [7.6萬用字元和清單](#76-match-patterns-and-lists) · [7.7排序](#77-sort-and-rank-with-order-by) · [7.8多面向](#78-group-by-several-attributes) · [7.9過去的windows](#79-look-at-a-past-window)
 
 ### 以`uniqueCount`計算不同的值
 
@@ -69,7 +67,7 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
->[!TIP]
+> **提示**
 >
 > `Transaction.duration`的p50、p95和p99透過長視窗的統計提供，因此每週的檢視都能保持快速。
 
@@ -123,7 +121,7 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT count(*) AS requests FROM Transaction FACET service ORDER BY requests ASC LIMIT 10
 ```
 
->[!TIP]
+> **提示**
 >
 > 沒有`HAVING`。 若要只尋找「忙碌」作業，請依`requests`排名並保留前N位，或新增可移除雜訊的`WHERE` （例如`WHERE http.method != 'OPTIONS'`）。
 
