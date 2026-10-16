@@ -12,9 +12,9 @@ feature_v2:
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
+source-git-commit: ba4f816187e77f3f7b708942b3f14535417c2fdc
 workflow-type: tm+mt
-source-wordcount: '186'
+source-wordcount: '253'
 ht-degree: 0%
 ---
 
@@ -37,3 +37,11 @@ ht-degree: 0%
 ## Observability Insights實際收集哪些資料？ {#what-data-is-collected}
 
 請參閱[涵蓋範圍、環境和資料保留](../get-started/coverage-and-data.md)，瞭解監控範圍、應用程式表現、保留期間和營運影響。
+
+## 為什麼我可以使用其他瀏覽器登入，卻無法使用Google Chrome？
+
+若要允許第三方Cookie進行可觀察性深入分析，並嘗試重新登入：
+
+1. 若要存取Cookie設定，請在Google Chrome中開啟`chrome://settings/cookies`。
+2. 若要允許Observability Insights的Cookie，請在&#x200B;**允許使用第三方Cookie**&#x200B;的網站下，選取&#x200B;**新增**&#x200B;並輸入`https://insights.adobecqms.net`。
+3. 若要檢查問題是否已解決，請在無痕視窗中登入可觀察性深入分析。

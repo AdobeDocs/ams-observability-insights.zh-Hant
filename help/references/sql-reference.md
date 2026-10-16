@@ -1,9 +1,9 @@
 ---
 title: SQL參考
 description: 參考Observability Insights支援的SQL語法、子句和函式。
-source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
+source-git-commit: 898e474e3ab7914f8de2df286c67ac046d3b22b0
 workflow-type: tm+mt
-source-wordcount: '1505'
+source-wordcount: '1504'
 ht-degree: 11%
 ---
 
@@ -29,7 +29,7 @@ FROM   <Entity>
 <unit>        := second | seconds | minute | minutes | hour | hours | day | days | week | weeks
 ```
 
-> **附註**
+>[!NOTE]
 >
 > 上述`--`註解僅為檔案。 SQL本身不接受註解。
 

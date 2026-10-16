@@ -1,28 +1,15 @@
 ---
 title: 儀表板Blueprint
 description: 使用Blueprint建立可觀察性深入分析控制面板，以監控應用程式和基礎結構。
-source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
+source-git-commit: 94e108d029b04bf4f04aec3fb8b949705c4005e1
 workflow-type: tm+mt
-source-wordcount: '1324'
+source-wordcount: '1196'
 ht-degree: 1%
 ---
 
 ## 儀表板Blueprint {#dashboard-blueprints}
 
 每個Blueprint都是完整、複雜的儀表板。 它列出目標、索引標籤和區段配置，以及每個具有其圖表型別、單位、臨界值、大小和查詢的Widget。 在12欄格線上，大小為`width×height`。 從上到下逐一建置，然後拖曳加以調整。
-
-| 藍圖 | 客群 | 反白顯示 |
-| ------------------------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------- |
-| [11.1 Golden Signals / SLO](#111-golden-signals--slo-board) | SRE、隨選 | 具有臨界值的KPI圖磚、Apdex、錯誤%、飽和度 |
-| [11.2錯誤分類](#112-error-triage-board) | 隨選 | 錯誤類別、5xx熱點、具有追蹤ID的失敗請求 |
-| [11.3延遲深入分析](#113-latency-deep-dive-board) | 效能工程師 | 百分位數、延遲貯體、變異性、交易組成、最慢追蹤 |
-| [11.4下游相依性](#114-downstream-dependencies-board) | 服務擁有者 | 輸出HTTP、DB、傳訊、RPC |
-| [11.5 AEM作者/發佈/ Dispatcher](#115-aem-author--publish--dispatcher-board) | AEM團隊 | 每層區段、Sling/JSP/JCR、Dispatcher載入 |
-| [11.6基礎結構容量](#116-infrastructure-capacity-board) | 平台/容量 | CPU模式，記憶體，磁碟，網路速率，公式 |
-| [11.7 JVM健康狀態](#117-jvm-health-board) | Java團隊 | 棧積%公式，每個主機和集區的棧積，執行緒， JVM CPU |
-| [11.8主管/ NOC牆](#118-executive--noc-wall-board) | NOC，領導力 | KPI圖磚、可用性公式、依層級的流量、SLO備註 |
-| [11.9比例與淨餘空間](#119-ratios--headroom-board-formula-showcase) | 每個人 | 公式Widget展示 |
-| [11.10服務總管](#1110-service-explorer-variable-driven) | 每個團隊 | 變數導向、可重複使用 |
 
 **圖表圖例：** **N** =數字，**L** =折線，**A** =區域，**B** =長條，**P** =圓餅圖，**T** =表格。
 
