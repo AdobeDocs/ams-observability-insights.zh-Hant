@@ -1,17 +1,15 @@
 ---
 title: 查詢逐步指南
 description: 使用SQL查詢方法在「可觀察性深入分析」中調查應用程式和基礎結構遙測。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: ae94813d8db77f7d5795add161a7fbfd7427c050
 workflow-type: tm+mt
-source-wordcount: '580'
+source-wordcount: '554'
 ht-degree: 0%
 ---
 
 ## 查詢逐步指南 {#query-cookbook}
 
 逐步指南是現成可用的查詢資料庫，依主題分組。 每個查詢前面都有一個最適合它的圖表型別，以&#x200B;**粗體**&#x200B;表示。 時間子句會被省略，因為時間選擇器會控制視窗。
-
-**在此檔案中：** [10.1資料探索](#101-data-discovery) · [10.2輸送量](#102-throughput) · [10.3延遲](#103-latency) · [10.4錯誤](#104-errors) · [10.5 Apdex](#105-apdex--user-experience) · [10.6服務和主機](#106-services-hosts--instances) · [10.7相依性](#107-downstream-dependencies) · [10.8 AEM](#108-aem-adobe-experience-manager) · [10.9相依性基礎架構](#109-infrastructure) · [10.10 JVM](#1010-jvm--runtime)
 
 >[!TIP]
 >

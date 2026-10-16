@@ -1,9 +1,9 @@
 ---
 title: 疑難排解
 description: 疑難排解Observability Insights中的SQL查詢、圖表和控制面板。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: c45d62d2af62e6bd0c88e210b31c8954b75533be
 workflow-type: tm+mt
-source-wordcount: '337'
+source-wordcount: '335'
 ht-degree: 5%
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 5%
 | `ORDER BY 'x' must reference a selected value or alias` | 依未選取的專案排序 | 依據別名對彙總和排序進行別名。 |
 | `IN requires between 1 and 100 values` | — | 分割或使用`LIKE`。 |
 | `Use IS NULL or IS NOT NULL for null comparisons` | `attr = NULL` | 使用`IS NULL`。 |
-| `Unexpected character '{'` | 在新增Widget預覽中或儲存時`{{variable}}` | 請參閱[教學課程3，步驟8.7](#87-make-dashboards-reusable-with-variables)限制。 |
+| `Unexpected character '{'` | 在新增Widget預覽中或儲存時`{{variable}}` | 請參閱[教學課程3](../tutorials/tutorial-3.md#make-dashboards-reusable-with-variables)限制。 |
 | `Unexpected character ';'` / `'"'` | 分號或雙引號 | 移除`;`；使用單引號。 |
 | `Expected a positive duration such as 30 minutes` | `TIMESERIES 5m` | 寫入`TIMESERIES 5 minutes`。 |
 | `Time range cannot exceed 31 days` | 選取器> 31天 | 縮小視窗。 |
@@ -36,7 +36,7 @@ ht-degree: 5%
 | `Unknown query name 'x' - must be one of: …` | 公式參考缺少的名稱 | 完全符合名稱（區分大小寫）。 |
 | **儲存失敗** | Widget查詢在伺服器端無效（通常為`{{var}}`） | 開啟每個最近編輯的Widget並&#x200B;**執行**&#x200B;它；修正或移除無效的專案。 |
 | _選取{{x}}_&#x200B;的值 | 變數沒有選取範圍 | 在變數列中挑選一個值。 |
-| _過去……無活動_ | 視窗中沒有列 | 加寬視窗；使用探索查詢（[資料探索](#101-data-discovery)）驗證篩選器。 |
+| _過去……無活動_ | 視窗中沒有列 | 加寬視窗；使用探索查詢（[資料探索](../examples/query-cookbook.md#data-discovery)）驗證篩選器。 |
 | 線條破碎為點 | 貯體小於資料步調 | 使用`TIMESERIES AUTO` （≥2分鐘）或長條圖。 |
 | Facet顯示空字串群組 | 某些列遺失屬性 | 新增`WHERE attr != ''`。 |
 | _此舊版SQL面板已不再執行_ | 舊的Raw-SQL產生器中的面板 | 在SQL中編輯→重建。 |
