@@ -1,7 +1,7 @@
 ---
 title: 控制面板和查詢檔案
 description: Observability Insights SQL查詢和控制面板的參考檔案。
-source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
+source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
 workflow-type: tm+mt
 source-wordcount: '10254'
 ht-degree: 4%
@@ -40,7 +40,7 @@ ht-degree: 4%
 |                 | [13. 疑難排解](#13-troubleshooting) | 每個錯誤訊息、其含義以及如何加以修正 |
 |                 | [14. 附錄](#14-appendix) | 限制、匯出檔案格式、單頁速查表 |
 
-&#x200B;# 快速入門
+# 快速入門
 
 ## &#x200B;1. 開始使用SQL：遙測的語言
 
@@ -488,7 +488,7 @@ SQL故意很小。 這可讓查詢保持安全、快速且與租使用者隔離�
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **儲存** | 儲存名稱、標籤、Widget、版面配置和變數。 每個Widget查詢都會在伺服器端重新驗證；一個無效的Widget會導致整個儲存失敗。 |
 | **匯出** | 下載`<dashboard-name>.json` （標籤、Widget、變數）。 |
-| **匯入** | 將JSON匯出&#x200B;**載入開啟的儀表板**，取代其索引標籤和變數。 然後按一下[儲存]。**&#x200B;** 秘訣：先建立空白的控制面板，然後匯入其中。 |
+| **匯入** | 將JSON匯出&#x200B;**載入開啟的儀表板**，取代其索引標籤和變數。 然後按一下[儲存]。**** 秘訣：先建立空白的控制面板，然後匯入其中。 |
 | **CSV / PNG** | 從Widget標題下載每個Widget。 |
 
 >[!TIP]
@@ -505,7 +505,7 @@ SQL故意很小。 這可讓查詢保持安全、快速且與租使用者隔離�
 
 [↑回頂端](#top)
 
-&#x200B;# 參照
+# 參照
 
 ## &#x200B;4. SQL參考
 
@@ -782,7 +782,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 <details>
 <summary><code>apdex(attribute, T)</code></summary>
 
-使用屬性單位中的臨界值`T` （3&rbrace;的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
+使用屬性單位中的臨界值`T` （3}的毫秒），計算[Apdex](https://www.apdex.org/)從0 （受挫敗）到1 （滿意）的分數。`duration`
 
 | 貯體 | 條件 | 粗細 |
 | ---------- | ------------------------------------ | ------ |
@@ -1194,7 +1194,7 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 
 [↑回頂端](#top)
 
-&#x200B;# 教學課程
+# 教學課程
 
 ## &#x200B;6. 教學課程1：您的第一個查詢
 
@@ -1828,7 +1828,7 @@ SELECT percentile(duration, 95) AS p95 FROM Transaction FACET host ORDER BY p95 
 
 [↑回頂端](#top)
 
-&#x200B;# 範例
+# 範例
 
 ## &#x200B;10. 查詢逐步指南
 
@@ -2353,7 +2353,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 
 ### 11.1 Golden Signals / SLO板
 
-**目標：**&#x200B;一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
+**目標：**一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
 **時間選擇器：**&#x200B;過去1小時（事件）或24小時（每日檢閱）。
 
 ```text
@@ -2679,7 +2679,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### 11.5 AEM作者/發佈/Dispatcher展示板
 
-**目標：**&#x200B;依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
+**目標：**依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
 使用名為`PUBLISH`、`AUTHOR`、`DISPATCHER`的&#x200B;**區段標題**&#x200B;以及結尾包含`- PUBLISH` / `- AUTHOR`的Widget標題來取得色彩提示。
 
 ```text
@@ -2834,7 +2834,7 @@ SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != ''
 
 ### 11.6基礎架構容量板
 
-**目標：**&#x200B;跨主機的容量規劃和飽和度捕捉。
+**目標：**跨主機的容量規劃和飽和度捕捉。
 **時間選擇器：** 7天用於趨勢（統計可讓此速度更快），1小時用於事件。
 
 ```text
@@ -2957,7 +2957,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ·單一主機的網路I/O總數（公式）** — 公式Widget， L， `bytes/s`， 12×4。 公式不能`FACET`，且`rate()`的範圍必須限定至一個主機（請參閱[已組織的量度實體](#53-curated-metric-entities)），因此請釘選主機 — 將`web-publish-01`取代為W5中的實際主機名稱。
+**W20 ·單一主機的網路I/O總數（公式）** — 公式Widget， L， `bytes/s`， 12×4。 公式不能`FACET`，且`rate()`的範圍必須限定至一個主機（請參閱[已組織的量度實體](data-dictionary.md#curated-metric-entities)），因此請釘選主機 — 將`web-publish-01`取代為W5中的實際主機名稱。
 
 查詢`netRx`：
 
@@ -3245,7 +3245,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ·單一主機的網路輸出/輸入比例** — 公式，L （釘選主機；請參閱[已組織的量度實體](#53-curated-metric-entities)）
+**W5 ·單一主機的網路輸出/輸入比例** — 公式，L （釘選主機；請參閱[已組織的量度實體](data-dictionary.md#curated-metric-entities)）
 
 查詢`rx`：
 
@@ -3385,7 +3385,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 
 [↑回頂端](#top)
 
-&#x200B;# 操作
+# 操作
 
 ## &#x200B;12. 效能
 
@@ -3430,7 +3430,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 | `FACET and TIMESERIES require an aggregate query` | 具有FACET/TIMESERIES的事件查詢 | 使用彙總。 |
 | `FACET supports at most five attributes` | > 5個Facet | 縮小。 |
 | `average requires a numeric attribute` | e.g. `average(service)` | 使用`uniqueCount`/`latest`或數值屬性。 |
-| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`不含TIMESERIES或在量測軌上 | 新增`TIMESERIES AUTO`；使用✔計數器實體（[已組織的量度實體](#53-curated-metric-entities)）；量測計使用`derivative()`。 |
+| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`不含TIMESERIES或在量測軌上 | 新增`TIMESERIES AUTO`；使用✔計數器實體（[已組織的量度實體](data-dictionary.md#curated-metric-entities)）；量測計使用`derivative()`。 |
 | `rate cannot be combined with other aggregates` | 多個具有`rate()`的專案 | 每個Widget一個`rate()`；與公式結合。 |
 | `percentOfTotal cannot be combined with TIMESERIES` | — | 移除時間序列。 |
 | `apdex requires an entity with a status attribute` | 量度實體上的`apdex` | 使用`Transaction`/`Span`/`AppRequest`。 |

@@ -1,7 +1,7 @@
 ---
 title: 儀表板Blueprint
 description: 使用Blueprint建立可觀察性深入分析控制面板，以監控應用程式和基礎結構。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
 workflow-type: tm+mt
 source-wordcount: '1324'
 ht-degree: 1%
@@ -30,7 +30,7 @@ ht-degree: 1%
 
 ### Golden Signals / SLO板
 
-**目標：**&#x200B;一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
+**目標：**一個畫面會回答「平台目前是否正常？」  — 流量、錯誤、延遲、飽和度。
 **時間選擇器：**&#x200B;過去1小時（事件）或24小時（每日檢閱）。
 
 ```text
@@ -364,7 +364,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### AEM作者/發佈/Dispatcher展示板
 
-**目標：**&#x200B;依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
+**目標：**依層級分組的AEM操作展示板，映象傳統New Relic AEM配置。
 使用名為`PUBLISH`、`AUTHOR`、`DISPATCHER`的&#x200B;**區段標題**&#x200B;以及結尾包含`- PUBLISH` / `- AUTHOR`的Widget標題來取得色彩提示。
 
 ```text
@@ -521,7 +521,7 @@ SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != ''
 
 ### 基礎架構容量板
 
-**目標：**&#x200B;跨主機的容量規劃和飽和度捕捉。
+**目標：**跨主機的容量規劃和飽和度捕捉。
 **時間選擇器：** 7天用於趨勢（統計可讓此速度更快），1小時用於事件。
 
 ```text
@@ -644,7 +644,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ·單一主機的網路I/O總數（公式）** — 公式Widget， L， `bytes/s`， 12×4。 公式不能`FACET`，且`rate()`的範圍必須限定至一個主機（請參閱[已組織的量度實體](#53-curated-metric-entities)），因此請釘選主機 — 將`web-publish-01`取代為W5中的實際主機名稱。
+**W20 ·單一主機的網路I/O總數（公式）** — 公式Widget， L， `bytes/s`， 12×4。 公式不能`FACET`，且`rate()`的範圍必須限定至一個主機（請參閱[已組織的量度實體](../references/data-dictionary.md#curated-metric-entities)），因此請釘選主機 — 將`web-publish-01`取代為W5中的實際主機名稱。
 
 查詢`netRx`：
 
@@ -939,7 +939,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ·單一主機的網路輸出/輸入比例** — 公式，L （釘選主機；請參閱[已組織的量度實體](#53-curated-metric-entities)）
+**W5 ·單一主機的網路輸出/輸入比例** — 公式，L （釘選主機；請參閱[已組織的量度實體](../references/data-dictionary.md#curated-metric-entities)）
 
 查詢`rx`：
 

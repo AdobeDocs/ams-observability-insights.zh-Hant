@@ -1,7 +1,7 @@
 ---
 title: 如何使用SQL查詢
 description: 瞭解如何在Observability Insights中撰寫和執行SQL查詢。
-source-git-commit: 148bf6480461a0109b221b8e7c2f9ab2035a7d68
+source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
 workflow-type: tm+mt
 source-wordcount: '557'
 ht-degree: 0%
@@ -43,7 +43,7 @@ FROM Transaction SELECT count(*) FACET service
 
 > **重要**
 >
-> **在您建置之前探索。** 屬性可用性取決於每項服務的檢測方式。 先在新租使用者上執行[探索查詢](#101-data-discovery)，以檢視哪些服務、主機、屬性和量度實際包含資料。
+> **在您建置之前探索。** 屬性可用性取決於每項服務的檢測方式。 先在新租使用者上執行[探索查詢](../../examples/query-cookbook.md#data-discovery)，以檢視哪些服務、主機、屬性和量度實際包含資料。
 
 ### 查詢的執行方式
 
