@@ -1,9 +1,9 @@
 ---
 title: 如何使用SQL查詢
 description: 瞭解如何在Observability Insights中撰寫和執行SQL查詢。
-source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
+source-git-commit: 898e474e3ab7914f8de2df286c67ac046d3b22b0
 workflow-type: tm+mt
-source-wordcount: '557'
+source-wordcount: '555'
 ht-degree: 0%
 ---
 
@@ -15,7 +15,7 @@ ht-degree: 0%
 
 使用SQL的最佳方式是開啟&#x200B;**探索**，並在您自己的資料上試用。
 
-> **提示**
+>[!TIP]
 >
 > SQL是唯讀的。 它無法變更或刪除資料，而且每個查詢的範圍都屬於您的租使用者。
 
@@ -92,6 +92,6 @@ flowchart LR
 | **探索** | 全域時間選擇器。 選取器範圍作用中時會忽略`SINCE`/`UNTIL`。 |
 | **沒有明確範圍的API** | `SINCE`/`UNTIL`在查詢中，預設為過去一小時。 |
 
-> **附註**
+>[!NOTE]
 >
 > 由於選擇器會在控制面板和Explore中獲勝，因此本指南通常會將`SINCE`排除在控制面板查詢之外。 使用者應該一律為查詢定義時間選擇器。

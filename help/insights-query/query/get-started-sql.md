@@ -1,9 +1,9 @@
 ---
 title: 開始使用SQL
 description: 瞭解如何使用SQL查詢Observability Insights遙測。
-source-git-commit: 148bf6480461a0109b221b8e7c2f9ab2035a7d68
+source-git-commit: 09c8edf64e744ff0c16acd0d5905fc6796490f82
 workflow-type: tm+mt
-source-wordcount: '687'
+source-wordcount: '684'
 ht-degree: 1%
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 1%
 | **套用至** | 深入分析UI → **探索**&#x200B;和&#x200B;**儀表板** （自訂儀表板） |
 | **客群** | 瞭解SQL的工程師、SRE和進階使用者 |
 
-> **提示**
+>[!TIP]
 >
 > 每個標示為`sql`的程式碼區塊都是SQL查詢，您可以將其直接貼到&#x200B;**探索→的SQL**&#x200B;或&#x200B;**儀表板→新增Widget→SQL**。
 
@@ -42,7 +42,7 @@ SELECT count(*) AS requests FROM Transaction TIMESERIES AUTO
 
 SQL同時支援&#x200B;**事件查詢** （傳回個別要求列）和&#x200B;**彙總查詢** （傳回總計、百分位數、比率、劃分和時間序列）。
 
-> **提示**
+>[!TIP]
 >
 > **儀表板→建立儀表板**&#x200B;中的範本完全由SQL建置。 開啟任何具有鉛筆圖示的範本Widget，以檢視其查詢並從中學習。
 
@@ -57,7 +57,7 @@ SQL可以查詢四個資料系列。 完整清單位於[資料字典](/help/refe
 | **一般量度** | `MetricGauge`, `MetricSum` | 依名稱、測量結果探索分類的任何OpenTelemetry測量結果 |
 | **預先彙總的跨區組合** | `SpanBreakdown` | 構成交易的子作業 |
 
-> **附註**
+>[!NOTE]
 >
 > 記錄、警示定義和詳細目錄關係無法使用。
 

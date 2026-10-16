@@ -1,9 +1,9 @@
 ---
 title: 教學課程1：您的第一個查詢
 description: 針對可觀察性深入分析遙測編寫您的第一個SQL查詢。
-source-git-commit: 52cc24792c47727700428be58b5bbb2a5c7223d2
+source-git-commit: 09c8edf64e744ff0c16acd0d5905fc6796490f82
 workflow-type: tm+mt
-source-wordcount: '552'
+source-wordcount: '549'
 ht-degree: 0%
 ---
 
@@ -33,7 +33,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 列會依第一欄遞減排序，所以將`timestamp`放在第一位，您最新的請求就會顯示在最上方。
 
-> **附註**
+>[!NOTE]
 >
 > SQL沒有`SELECT *`。 列出屬性可讓結果保持小規模且易於讀取。 [資料字典](#data-dictionary)和編輯器中的自動完成會顯示可用的內容。
 
@@ -67,7 +67,7 @@ SELECT uniqueCount(host) FROM Transaction
 SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs FROM Transaction
 ```
 
-> **提示**
+>[!TIP]
 >
 > 別名會變成欄標題和圖例標籤，而它們就是您在`ORDER BY`中參照的內容。 養成命名每個彙總的習慣。
 
@@ -125,7 +125,7 @@ SELECT count(*) AS slowOrFailed FROM Transaction WHERE service = 'checkout' AND 
 SELECT count(*) AS contentRequests FROM Transaction WHERE urlPath LIKE '/content/%'
 ```
 
-> **附註**
+>[!NOTE]
 >
 > 字串值區分大小寫，且使用單引號： `'Error'`，而非`"Error"`或`'error'`。 以您租使用者的服務取代`checkout`。 下一個步驟將說明如何列出這些變數。
 

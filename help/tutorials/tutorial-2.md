@@ -1,9 +1,9 @@
 ---
 title: 教學課程2：控制您的資料
 description: 瞭解如何在可觀察性深入分析中篩選、分組和控制查詢結果。
-source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
+source-git-commit: 09c8edf64e744ff0c16acd0d5905fc6796490f82
 workflow-type: tm+mt
-source-wordcount: '337'
+source-wordcount: '336'
 ht-degree: 0%
 ---
 
@@ -67,7 +67,7 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
-> **提示**
+>[!TIP]
 >
 > `Transaction.duration`的p50、p95和p99透過長視窗的統計提供，因此每週的檢視都能保持快速。
 
